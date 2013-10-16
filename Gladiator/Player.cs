@@ -5,48 +5,65 @@ namespace Gladiator
 {
 	public class Player
 	{
+		/**
+		 * Nom String
+		 */
 		private string _lastname;
 		public string Lastname {
 			get { return this._lastname; }
 			set { this._lastname = value; }
 		}
 
+		/**
+		 * Prenom String
+		 */
 		private string _firstname;
 		public string Firstname {
 			get { return this._firstname; }
 			set { this._firstname = value; }
 		}
 
+		/**
+		 * Pseudo String
+		 */
 		private string _pseudo;
 		public string Pseudo {
 			get { return this._pseudo; }
 			set { this._pseudo = value; }
 		}
 
-		private DateTime _dateInscription;
-		public DateTime DateInscription {
-			get { return this._dateInscription; }
-			set { this._dateInscription = value; }
+		/**
+		 * Date d'inscription DateTime
+		 */
+		private DateTime _registrationDate;
+		public DateTime RegistrationDate {
+			get { return this._registrationDate; }
+			set { this._registrationDate = value; }
 		}
 
+		/**
+		 * Collection Team
+		 */
 		private List<Team> _team = new List<Team>(); 
 		public List<Team> Team {
 			get { return this._team; }
 		}
 
-
-		public Player (string p_lastname, string p_firstname, string p_pseudo, DateTime p_dateInscription)
+		/**
+		 * Constructeur de Player
+		 */
+		public Player (string p_lastname, string p_firstname, string p_pseudo, DateTime p_registrationDate)
 		{
 			this.Lastname 			= p_lastname;
 			this.Firstname 			= p_firstname;
 			this.Pseudo 			= p_pseudo;
-			this.DateInscription 	= p_dateInscription;
+			this.RegistrationDate 	= p_registrationDate;
 		}
 
 		/**
 		 * Ajouter une equipe au joueur.
-		 * Chaque joueur peut créer jusqu'à 5 équipes de gladiateurs.
 		 * 
+		 * Chaque joueur peut créer jusqu'à 5 équipes de gladiateurs.
 		 */
 		public void ajouterEquipe(Team p_team)
 		{

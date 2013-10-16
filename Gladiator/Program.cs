@@ -20,6 +20,7 @@ namespace Gladiator
 			/* Initialisation equipes */
 			Team team1 = new Team ("Les cougars", "On est des dingues !!!");
 			Team team2 = new Team ("Les tigres", "Tigrou est notre ami");
+
 			player1.ajouterEquipe (team1);
 			player1.ajouterEquipe (team2);
 
