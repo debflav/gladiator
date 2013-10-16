@@ -42,20 +42,23 @@
     <Compile Include="Duel.cs" />
     <Compile Include="Equipments\Interfaces\IAttack.cs" />
     <Compile Include="Equipments\Interfaces\IDefend.cs" />
-    <Compile Include="Equipments\LargeShield.cs" />
-    <Compile Include="Equipments\SmallShield.cs" />
     <Compile Include="Equipments\Equipment.cs" />
-    <Compile Include="Equipments\Trident.cs" />
-    <Compile Include="Equipments\Spear.cs" />
-    <Compile Include="Equipments\Sword.cs" />
-    <Compile Include="Equipments\Dagger.cs" />
-    <Compile Include="Equipments\Helmet.cs" />
-    <Compile Include="Equipments\Net.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="Equipments\Attack\Dagger.cs" />
+    <Compile Include="Equipments\Defend\Helmet.cs" />
+    <Compile Include="Equipments\Defend\LargeShield.cs" />
+    <Compile Include="Equipments\Attack\Net.cs" />
+    <Compile Include="Equipments\Defend\SmallShield.cs" />
+    <Compile Include="Equipments\Attack\Spear.cs" />
+    <Compile Include="Equipments\Attack\Sword.cs" />
+    <Compile Include="Equipments\DefendAndAtack\Trident.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Equipments\" />
     <Folder Include="Equipments\Interfaces\" />
+    <Folder Include="Equipments\Attack\" />
+    <Folder Include="Equipments\Defend\" />
+    <Folder Include="Equipments\DefendAndAtack\" />
   </ItemGroup>
 </Project>

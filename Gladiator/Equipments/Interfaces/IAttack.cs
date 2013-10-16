@@ -1,12 +1,15 @@
 using System;
 
-namespace Gladiator
+namespace Equipments.Interfaces
 {
-	public class IAttack
+	public interface IAttack
 	{
-		public IAttack ()
-		{
-		}
+
+		double LuckyTouch{ get; set;}
+
+		// Fonction pour réduire la puissance des coups
+		void downDamage ();
+
 	}
 }
 

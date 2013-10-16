@@ -1,9 +1,13 @@
 using System;
 
-namespace Gladiator
+namespace Equipments.Interfaces
 {
+	
 	public interface IDefend
 	{
+
+		float _luckyParry{ get; set; }
+
 	}
 }
 
