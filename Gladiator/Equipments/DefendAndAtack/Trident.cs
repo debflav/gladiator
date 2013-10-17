@@ -10,7 +10,7 @@ namespace Equipments.DefendAndAtack
 		private double _luckyParry;
 
 		#region IDefend implementation
-		public float LuckyParry {
+		public double LuckyParry {
 			get {
 				return this._luckyParry;
 			}

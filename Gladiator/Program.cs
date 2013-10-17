@@ -35,8 +35,29 @@ namespace Gladiator
 			Team team1 = new Team ("Les cougars", "On est des dingues !!!");
 			Team team2 = new Team ("Les tigres", "Tigrou est notre ami");
 
-			player1.ajouterEquipe (team1);
-			player1.ajouterEquipe (team2);
+			Console.WriteLine(" ----------- TEST GLADIATOR ---------------- ");
+
+			Gladiator monGlatiateur = new Gladiator ("Bim");
+			monGlatiateur.GladiatorWinNumber = 5;
+			monGlatiateur.GladiatorLostNumber = 5;
+
+			Console.WriteLine ("% victoir = " + monGlatiateur.getPercentVictoy ());
+			Console.WriteLine (" NbEquipmentCurent " + monGlatiateur.NbEquipmentCurent);
+
+			monGlatiateur.addEquipment (maDague);
+
+			Console.WriteLine (" NbEquipmentCurent " + monGlatiateur.NbEquipmentCurent);
+
+			monGlatiateur.addEquipment (MonFilet);
+			monGlatiateur.addEquipment (MonFilet);
+			monGlatiateur.addEquipment (MonFilet);
+			monGlatiateur.addEquipment (MonFilet);
+			monGlatiateur.addEquipment (MonFilet);
+
+			Console.WriteLine (" NbEquipmentCurent " + monGlatiateur.NbEquipmentCurent);
+
+//			player1.ajouterEquipe (team1);
+//			player1.ajouterEquipe (team2);
 
 			/* Ajout d'un gladiateur */
 			//Gladiator.

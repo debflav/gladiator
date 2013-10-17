@@ -7,6 +7,18 @@ namespace Gladiator
 	public class Gladiator
 	{
 
+		const int NB_MAX_EQUIPMENT = 10;
+
+
+		// Constructeur --------------------------------
+
+		private int _nbEquipmentCurent;
+		public int NbEquipmentCurent {
+			get { return this._nbEquipmentCurent; }
+			set { this._nbEquipmentCurent = value; }
+		}
+
+
 		private string _gladiatorName;
 		public string GladiatorName {
 			get { return this._gladiatorName; }
@@ -42,31 +54,50 @@ namespace Gladiator
 		}
 
 
-		private List<Equipment> _equipment = new List<Equipment>(); 
+		private List<Equipment> _equipment;
 		public List<Equipment> Equipment {
 			get { return this._equipment; }
+			set { this._equipment = value; }
 		}
 
 		/**
 		 * 
 		 */
-		public Gladiator ()
+		public Gladiator (string name)
 		{
+			this.GladiatorName = name;
+			this.Equipment = new List<Equipment>();
+			this.NbEquipmentCurent = 0;
+		}
+		// ----------------------------------------
+
+		/**
+		 * Calcule du poucentage de victoir
+		 */
+		public double getPercentVictoy()
+		{
+			int nbVictory = this.GladiatorWinNumber;
+			int nbDefeat = this.GladiatorLostNumber;
+			int NbMatchToPlay = nbVictory + nbDefeat;
+
+			return (double)nbVictory*(double)100/(double)NbMatchToPlay;
 		}
 
 		/**
-		 * 
+		 * Ajouter un equipement à sa liste d'equipement
+		 * Avec test sur le nombre de points de équipments
 		 */
-		/*public int getPercentVictoy()
+		public void addEquipment(Equipment onEquipment)
 		{
+			int nbPointEquipment = onEquipment.Point;
 
-		}*/
+			if ((nbPointEquipment + this.NbEquipmentCurent) <= NB_MAX_EQUIPMENT) {
+				this.Equipment.Add (onEquipment);
+				this.NbEquipmentCurent = this.NbEquipmentCurent + nbPointEquipment;
+			} else {
 
-		/**
-		 * 
-		 */
-		public void addEquipment()
-		{
+				Alert.showAlert ("Le nombre d'équipement max est atteint ! ");
+			}
 
 		}
 
