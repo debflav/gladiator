@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Equipments;
 
 namespace Gladiator
 {
@@ -22,8 +23,8 @@ namespace Gladiator
 
 		private int _gladiatorDefeatNumber;
 		public int GladiatorLostNumber {
-			get { return this._gladiatorLostNumber; }
-			set { this._gladiatorLostNumber = value; }
+			get { return this._gladiatorDefeatNumber; }
+			set { this._gladiatorDefeatNumber = value; }
 		}
 
 
@@ -56,10 +57,10 @@ namespace Gladiator
 		/**
 		 * 
 		 */
-		public int getPercentVictoy()
+		/*public int getPercentVictoy()
 		{
 
-		}
+		}*/
 
 		/**
 		 * 
@@ -80,10 +81,10 @@ namespace Gladiator
 		/**
 		 * 
 		 */
-		public bool defend()
+		/*public bool defend()
 		{
 
-		}
+		}*/
 	}
 }
 

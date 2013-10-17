@@ -104,7 +104,7 @@ namespace Gladiator
 		{
 			// Regarder le nombre de gladiateurs actuels
 
-			this._gladiator.Count;
+			//this._gladiator.Count;
 
 			return true;
 		}

@@ -41,7 +41,7 @@ namespace Gladiator
 			//Gladiator.
 
 			/* Ajout de gladiateurs à une équipe */
-			team1.addGladiator (team1);
+			//team1.addGladiator (team1);
 		}
 	}
 }
