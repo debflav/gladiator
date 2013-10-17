@@ -4,6 +4,7 @@ using Equipments;
 using Equipments.Interfaces;
 using Equipments.Attack;
 using Equipments.DefendAndAtack;
+using System.Security.Cryptography;
 
 namespace Gladiator
 {
@@ -125,18 +126,19 @@ namespace Gladiator
 		 * Renvois une arme au moment de l'attaque
 		 * Avec ordre d'initiative des armes (Filet - Lance - Trident - Épée - Dague
 		 * 
+		 * @param	bool false si premier passe d'arme true si Attack réel
 		 * @return	int	chance de toucher l'adversaire
 		 */
-		public int attack()
+		public Equipment attack(bool gauge)
 		{
-			int equipment = 0;
-			int luckyTouch = 0;
+			int nbEquipment = 0;
+			Equipment e = null;
 
 			// rechercher les equipements le plus fort
 			foreach(Equipment onEquiment in this.Equipments){
 				if (onEquiment.Use) {
-					if (equipment < onEquiment.Priority) {
-						equipment = onEquiment.Priority;
+					if (nbEquipment < onEquiment.Priority) {
+						nbEquipment = onEquiment.Priority;
 					}
 				}
 
@@ -144,23 +146,26 @@ namespace Gladiator
 
 			// mettre l'équipement trouver a false (pour ne pas le réutiliser)
 			foreach(Equipment onEquiment in this.Equipments){
-				if (onEquiment is IAttack && onEquiment.Priority == equipment) {
-					onEquiment.Use = false;
-					luckyTouch = onEquiment.Point;
+				if (onEquiment is IAttack && onEquiment.Priority == nbEquipment) {
+					if (gauge) {
+						onEquiment.Use = false;
+					}
+					e = onEquiment;
 				}
 			}
 
-			return luckyTouch;
+			return e;
 
 		}
+
 
 		/**
 		 * Renvois un true or false si le gladiateur est mort
 		 *
-		 * @param	int		Chance que l'arme à de toucher l'adversaire;
-		 * @return	bool	pour voir si le gladiateur est tuer
+		 * @param	Equipment		Chance que l'arme à de toucher l'adversaire;
+		 * @return	void	pour voir si le gladiateur est tuer
 		 */
-		public bool defend(int luckyTouch)
+		public void defend(Equipment p_equipment)
 		{
 			int i = 0;
 			int countDefend = 0;
@@ -175,47 +180,79 @@ namespace Gladiator
 				
 			}
 
-			while(i <= luckyTouch/10){
+			if (p_equipment != null) {
+				while(i <= p_equipment.LuckyTouch/10){
 
-				// Random pour le toucher
-				int myNbRandom = this._ramdom.Next (0, 10);
-				//Alert.showAlert("nbramdome = " + myNbRandom.ToString());
-				// si le gladiateur est touché
-				if (myNbRandom > 5) {
+					// Random pour le toucher
+					int myNbRandom = this._ramdom.Next (0, 100);
 
-					// Protection
-					foreach (Equipment onEquiment in this.Equipments) {
-						//si arme de protection
-						if (onEquiment is IDefend && onEquiment.Use == true) {
+					// si le gladiateur est touché
+					if (myNbRandom >= 50) {
 
-							//protection chance de toucher
-							for(int j = 0; j<=onEquiment.LuckyParry/10; j++){
-								myNbRandom = this._ramdom.Next (0, 10);
+						// Protection
+						foreach (Equipment onEquiment in this.Equipments) {
+							//si arme de protection
+							if (onEquiment is IDefend && onEquiment.Use == true) {
+								//protection chance de toucher
+								for(int j = 0; j<= onEquiment.LuckyParry/10; j++){
 
-								if (myNbRandom > 5) {
-									onEquiment.Use = false;
-									touch++;
+									myNbRandom = this._ramdom.Next (0, 10);
+
+									if (myNbRandom >= 50) {
+										onEquiment.Use = false;
+										touch++;
+									}
 								}
+
 							}
 
 						}
 
+						i = p_equipment.LuckyTouch / 10;
+
 					}
-
-					i = luckyTouch / 10;
-
+					i++;
 				}
-				i++;
-
 			}
 
 			if (touch >= countDefend) {
-				return true;
+				this.InGame = true;
 			} else {
-				return false;
+				this.InGame = false;
 			}
 
 		}
+
+		/**
+		 * Retourne un string pour visualiser le gladiator
+		 *
+		 * @return	string	
+		 */
+		public override string ToString(){
+
+			int nbResteOfPointEquipement = NB_MAX_EQUIPMENT - this.NbEquipmentCurent;
+		
+			string msg = "\n+++++++++++++++++++++++++++++++++++++++++\n\n";
+			msg += "\tGladiateur : " + this.GladiatorName + "\n";
+			msg += "\t-----------------------\n";
+			msg += "\tEquipement : \n";
+			msg += "\tNombre point equipement restant : " + nbResteOfPointEquipement.ToString()  +"\n";
+			foreach (Equipment oneEquipment in this.Equipments) {
+				msg += "\t - " + oneEquipment.Name + "\n";
+			}
+			msg += "\t-----------------------\n";
+			msg += "\tNombe de defaite : " + this.GladiatorDefeatNumber.ToString () + "\n";
+			msg += "\tNombe de victoir : " + this.GladiatorWinNumber.ToString () + "\n";
+			msg += "\tPrioritée : " + this.Priority.ToString() + "\n";
+			msg += "\tIn game : " + this.InGame.ToString () + "\n";
+			msg += "\n+++++++++++++++++++++++++++++++++++++++++\n";
+
+			return msg;
+
+		}
+
+
+
 	}
 }
 
