@@ -15,7 +15,8 @@ namespace Gladiator
 			Net MonFilet = new Net();
 			Spear MaLance = new Spear ();
 			Sword monEpee = new Sword ();
-			Console.WriteLine (maDague.Name);
+			Helmet monCasque = new Helmet ();
+			Console.WriteLine (monCasque.Name);
 			Console.WriteLine (MonFilet.Name);
 			Console.WriteLine (MaLance.Name);
 			Console.WriteLine (monEpee.Name);

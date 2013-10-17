@@ -6,7 +6,7 @@ namespace Equipments.Interfaces
 	public interface IDefend
 	{
 
-		float _luckyParry{ get; set; }
+		float LuckyParry{ get; set; }
 
 	}
 }
