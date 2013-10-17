@@ -96,11 +96,15 @@ namespace Gladiator
 
 		/**
 		 * Ajouter un gladiateur à l'équipe
+		 * 
+		 * Une équipe est composée de trois gladiateurs maximum
+		 * Retourne true si l'execution s'est bien déroulée
 		 */
-		public bool addGladiator()
+		public bool addGladiator(Gladiator p_gladiator)
 		{
+			// Regarder le nombre de gladiateurs actuels
 
-
+			this._gladiator.Count;
 
 			return true;
 		}
@@ -108,6 +112,7 @@ namespace Gladiator
 		/**
 		 * Supprimer un gladiateur de l'équipe
 		 * 
+		 * Retourne true si l'execution s'est bien déroulée
 		 */
 		public bool deleteGladiator()
 		{
@@ -119,12 +124,11 @@ namespace Gladiator
 		/**
 		 * Obtenir le pourcentage de victoire
 		 * 
+		 * 
 		 */
 		/*public double getPercentVictoy()
 		{
 
-
-			return true;
 		}*/
 
 	}

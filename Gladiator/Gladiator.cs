@@ -34,7 +34,7 @@ namespace Gladiator
 		}
 
 
-		private bool _inGame;
+		private bool _inGame = false;
 		public bool InGame {
 			get { return this._inGame; }
 			set { this._inGame = value; }
@@ -72,10 +72,10 @@ namespace Gladiator
 		/**
 		 * 
 		 */
-		public IAttaque attaquer()
+		/*public IAttaque attaquer()
 		{
 
-		}
+		}*/
 
 		/**
 		 * 
