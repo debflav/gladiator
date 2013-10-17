@@ -71,7 +71,7 @@ namespace Gladiator
 			// Compte le nombre d'équipe actuel pour le joueur
 			int teamNumber = Team.Count;
 
-			if(teamNumber > 5) {
+			if(teamNumber >= 5) {
 				return false;
 			}
 

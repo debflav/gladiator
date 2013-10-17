@@ -49,10 +49,10 @@ namespace Gladiator
 		/**
 		 * Nombre de défaite Int
 		 */
-		private int _defeatNumber;
-		public int DefeatNumber {
-			get { return this._defeatNumber; }
-			set { this._defeatNumber = value; }
+		private int _teamDefeatNumber;
+		public int TeamDefeatNumber {
+			get { return this._teamDefeatNumber; }
+			set { this._teamDefeatNumber = value; }
 		}
 
 		/**
@@ -75,7 +75,7 @@ namespace Gladiator
 		}
 
 		/**
-		 * Collection Gladiator
+		 * Collection Gladiateur
 		 */
 		private List<Gladiator> _gladiator = new List<Gladiator>(); 
 		public List<Gladiator> Gladiator {
@@ -88,8 +88,8 @@ namespace Gladiator
 		 */
 		public Team (string p_teamName, string p_description)
 		{
-			this.TeamName 			= p_teamName;
-			this.Description 		= p_description;
+			this.TeamName 	 = p_teamName;
+			this.Description = p_description;
 
 			// Incremente le numéro de l'equipe
 			Team._teamNumber++;
@@ -102,29 +102,32 @@ namespace Gladiator
 		 * Une équipe est composée de trois gladiateurs maximum
 		 * Retourne true si l'execution s'est bien déroulée
 		 */
-		public void addGladiator(Gladiator p_gladiator)
+		public bool addGladiator(Gladiator p_gladiator)
 		{
-			// Regarder le nombre de gladiateurs actuels
+			// Regarde le nombre de gladiateurs actuels
 			int countGladiators = Gladiator.Count;
 
-			if(countGladiators == 3) {
-				throw new Exception ("Limite du nombre de gladiateur fixé à trois");
+			if(countGladiators >= 3) {
+				return false;
 			}
 
 			// Un nom de gladiateur doit exister une seule fois
 			foreach (Gladiator b_row in Gladiator) {
 				if (b_row.GladiatorName == p_gladiator.GladiatorName) {
-					throw new Exception ("Ce nom de gladiateur existe déjà dans cette équipe.");
+					return false;
 				}
 			}
 
 			// Insertion de l'équipe dans la collection
 			try {
-				this._gladiator.Add (p_gladiator);
+				this.Gladiator.Add (p_gladiator);
 			} catch(Exception) {
 				throw new Exception ("Something wrong append.");
 			}
+
+			return true;
 		}
+
 
 		/**
 		 * Affichage des gladiateurs dans l'équipe
@@ -135,38 +138,43 @@ namespace Gladiator
 			int countGladiators = Gladiator.Count;
 
 			if (countGladiators == 0) {
-				Console.WriteLine ("Aucun joueur dans cette équipe.");
+				Console.WriteLine ("Aucun joueur dans l'équipe " + this.TeamName);
 			} else {
 				// Affichage des équipes
-				Console.WriteLine ("Les gladiateurs de l'équipe:");
+				if (countGladiators == 1) {
+					Console.WriteLine ("Un seul gladiateur dans l'équipe " + this.TeamName + ":");
+				} else {
+					Console.WriteLine ("Les gladiateurs de l'équipe " + this.TeamName + " sont: ");
+				}
 				foreach (Gladiator b_row in Gladiator) {
 					Console.WriteLine (b_row.GladiatorName);
 				}
 			}
 		}
 
+
 		/**
 		 * Supprimer un gladiateur de l'équipe
 		 * 
 		 * Retourne true si l'execution s'est bien déroulée
 		 */
-		public bool deleteGladiatorFromTeam(Gladiator p_gladiator)
+		public void deleteGladiatorFromTeam(Gladiator p_gladiator)
 		{
-			if(Gladiator.Remove( p_gladiator)) {
-				return true;
+			try {
+				Gladiator.Remove( p_gladiator);
+			} catch(Exception) {
+				throw new Exception ("La suppression a échoué.");
 			}
-			return false;
 		}
+
 
 		/**
 		 * Obtenir le pourcentage de victoire
-		 * 
-		 * 
 		 */
-		/*public double getPercentVictoy()
+		public double getPercentVictory()
 		{
-
-		}*/
+			return (double)this.WinNumber*(double)100/(double)this.MatchPlayed;
+		}
 
 	}
 }

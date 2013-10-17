@@ -62,7 +62,8 @@ namespace Gladiator
 			monGlatiateur.addEquipment (MonFilet);
 
 			Console.WriteLine (" NbEquipmentCurent " + monGlatiateur.NbEquipmentCurent);
-			
+
+			/*	*/
 			Console.WriteLine( "-----------Add Team------------");
 			if (!player1.addTeam (team1))
 				Console.WriteLine ( "Limite du nombre d'équipe fixé à cinq");
@@ -71,16 +72,17 @@ namespace Gladiator
 			player1.showTeam ();
 			Console.WriteLine( "-------------------------------");
 
-			/* Ajout d'un gladiateur */
+			/*	*/
+			Console.WriteLine( "-------Add Gladiator-------");
 			Gladiator gladiator1 = new Gladiator ("Boris");
-
-			/* Ajout d'un gladiateur dans une équipe */
-			team1.addGladiator (gladiator1);
+			if(!team1.addGladiator (gladiator1))
+				Console.WriteLine ("Vérifiez que l'équipe ne comporte pas déjà trois" +
+				"joueurs ou que ce nom de gladiateur n'existe pas déjà dans cette équipe");
 			team1.showGladiatorsFromTeam();
-			//team2.showGladiatorsFromTeam();
-
+			team2.showGladiatorsFromTeam();
 			team1.deleteGladiatorFromTeam (gladiator1);
 			team1.showGladiatorsFromTeam();
+			Console.WriteLine( "---------------------------");
 		}
 	}
 }
