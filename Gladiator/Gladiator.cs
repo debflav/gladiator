@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Equipments;
 
 namespace Gladiator
 {
@@ -22,8 +23,8 @@ namespace Gladiator
 
 		private int _gladiatorDefeatNumber;
 		public int GladiatorLostNumber {
-			get { return this._gladiatorLostNumber; }
-			set { this._gladiatorLostNumber = value; }
+			get { return this._gladiatorDefeatNumber; }
+			set { this._gladiatorDefeatNumber = value; }
 		}
 
 
@@ -34,7 +35,7 @@ namespace Gladiator
 		}
 
 
-		private bool _inGame;
+		private bool _inGame = false;
 		public bool InGame {
 			get { return this._inGame; }
 			set { this._inGame = value; }
@@ -56,10 +57,10 @@ namespace Gladiator
 		/**
 		 * 
 		 */
-		public int getPercentVictoy()
+		/*public int getPercentVictoy()
 		{
 
-		}
+		}*/
 
 		/**
 		 * 
@@ -72,18 +73,18 @@ namespace Gladiator
 		/**
 		 * 
 		 */
-		public IAttaque attaquer()
+		/*public IAttaque attaquer()
 		{
 
-		}
+		}*/
 
 		/**
 		 * 
 		 */
-		public bool defend()
+		/*public bool defend()
 		{
 
-		}
+		}*/
 	}
 }
 
