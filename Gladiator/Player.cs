@@ -49,6 +49,7 @@ namespace Gladiator
 			get { return this._team; }
 		}
 
+
 		/**
 		 * Constructeur de Player
 		 */
@@ -60,34 +61,40 @@ namespace Gladiator
 			this.RegistrationDate 	= p_registrationDate;
 		}
 
+
 		/**
 		 * Ajouter une equipe au joueur.
-		 * 
 		 * Chaque joueur peut créer jusqu'à 5 équipes de gladiateurs.
 		 */
-		public void ajouterEquipe(Team p_team)
+		public bool addTeam(Team p_team)
 		{
 			// Compte le nombre d'équipe actuel pour le joueur
-			int teamNumber = _team.Count;
+			int teamNumber = Team.Count;
 
-			if(teamNumber == 5) {
-				throw new Exception ("Limite du nombre d'équipe fixé à cinq");
+			if(teamNumber > 5) {
+				return false;
 			}
 
 			// Insertion de l'équipe dans la collection
 			try {
-				this._team.Add (p_team);
+				this.Team.Add (p_team);
 			} catch(Exception) {
 				throw new Exception ("Something wrong append.");
 			}
 
-			// Affichage des équipes
-			Console.WriteLine( "Les équipes sont:");
+			return true;
+		}
 
-			foreach (Team b_row in _team) {
-				Console.WriteLine( b_row.TeamName);
+
+		/**
+		 * Affichage de la liste des équipes
+		 */
+		public void showTeam()
+		{
+			Console.WriteLine( "La liste complète des équipes est:");
+			foreach (Team b_row in Team) {
+				Console.WriteLine( "-" + b_row.TeamName);
 			}
-			Console.WriteLine( "-------------------------------");
 		}
 	}
 }

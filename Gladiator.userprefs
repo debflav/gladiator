@@ -1,22 +1,23 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="Gladiator/Gladiator.cs">
     <Files>
+      <File FileName="Gladiator/Program.cs" Line="29" Column="37" />
       <File FileName="Gladiator/Player.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Team.cs" Line="106" Column="1" />
-      <File FileName="Gladiator/Gladiator.cs" Line="49" Column="6" />
-      <File FileName="Gladiator/Program.cs" Line="25" Column="16" />
+      <File FileName="Gladiator/Team.cs" Line="1" Column="1" />
+      <File FileName="Gladiator/Gladiator.cs" Line="3" Column="1" />
+      <File FileName="Gladiator/Menu.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Gladiator" expanded="True">
-            <Node name="Equipments" expanded="True" selected="True" />
+            <Node name="a name did not start with a legal character 60 (&amp;lt;)  Line 55, position 2." selected="True" />
           </Node>
         </State>
       </Pad>
       <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
+        <State selected="True" />
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State />

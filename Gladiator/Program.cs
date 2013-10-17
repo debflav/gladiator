@@ -12,7 +12,7 @@ namespace Gladiator
 		{
 
 			/* Menu */
-			//Menu menu = new Menu ();
+			Menu menu = new Menu ();
 			//menu.newPlayer ();
 			//menu.Show ();
 
@@ -62,9 +62,14 @@ namespace Gladiator
 			monGlatiateur.addEquipment (MonFilet);
 
 			Console.WriteLine (" NbEquipmentCurent " + monGlatiateur.NbEquipmentCurent);
-
-//			player1.ajouterEquipe (team1);
-//			player1.ajouterEquipe (team2);
+			
+			Console.WriteLine( "-----------Add Team------------");
+			if (!player1.addTeam (team1))
+				Console.WriteLine ( "Limite du nombre d'équipe fixé à cinq");
+			if (!player1.addTeam (team2))
+				Console.WriteLine ( "Limite du nombre d'équipe fixé à cinq");
+			player1.showTeam ();
+			Console.WriteLine( "-------------------------------");
 
 			/* Ajout d'un gladiateur */
 			Gladiator gladiator1 = new Gladiator ("Boris");
