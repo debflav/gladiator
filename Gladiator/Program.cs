@@ -39,22 +39,19 @@ namespace Gladiator
 
 			Gladiator monGlatiateur = new Gladiator ("Bim");
 			monGlatiateur.GladiatorWinNumber = 5;
-			monGlatiateur.GladiatorLostNumber = 5;
+			monGlatiateur.GladiatorDefeatNumber = 5;
 
-			Console.WriteLine ("% victoir = " + monGlatiateur.getPercentVictoy ());
+			Console.WriteLine ("% victoir = " + monGlatiateur.getPercentVictory ());
 			Console.WriteLine (" NbEquipmentCurent " + monGlatiateur.NbEquipmentCurent);
 
 			monGlatiateur.addEquipment (maDague);
+			monGlatiateur.addEquipment (monEpee);
 
 			Console.WriteLine (" NbEquipmentCurent " + monGlatiateur.NbEquipmentCurent);
 
-			monGlatiateur.addEquipment (MonFilet);
-			monGlatiateur.addEquipment (MonFilet);
-			monGlatiateur.addEquipment (MonFilet);
-			monGlatiateur.addEquipment (MonFilet);
-			monGlatiateur.addEquipment (MonFilet);
-
 			Console.WriteLine (" NbEquipmentCurent " + monGlatiateur.NbEquipmentCurent);
+			Console.WriteLine (" ->  " + monGlatiateur.attack().ToString());
+
 
 //			player1.ajouterEquipe (team1);
 //			player1.ajouterEquipe (team2);
