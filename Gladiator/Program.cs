@@ -11,6 +11,13 @@ namespace Gladiator
 		public static void Main (string[] args)
 		{
 
+			/* Menu */
+			//Menu menu = new Menu ();
+			//menu.newPlayer ();
+			//menu.Show ();
+
+
+
 			Dagger maDague = new Dagger();
 			Net MonFilet = new Net();
 			Spear MaLance = new Spear ();
@@ -60,10 +67,15 @@ namespace Gladiator
 //			player1.ajouterEquipe (team2);
 
 			/* Ajout d'un gladiateur */
-			//Gladiator.
+			Gladiator gladiator1 = new Gladiator ("Boris");
 
-			/* Ajout de gladiateurs à une équipe */
-			//team1.addGladiator (team1);
+			/* Ajout d'un gladiateur dans une équipe */
+			team1.addGladiator (gladiator1);
+			team1.showGladiatorsFromTeam();
+			//team2.showGladiatorsFromTeam();
+
+			team1.deleteGladiatorFromTeam (gladiator1);
+			team1.showGladiatorsFromTeam();
 		}
 	}
 }
