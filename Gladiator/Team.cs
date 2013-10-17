@@ -82,6 +82,7 @@ namespace Gladiator
 			get { return this._gladiator; }
 		}
 
+
 		/**
 		 * Crée une équipe à l'instanciation de la classe
 		 */
@@ -94,19 +95,54 @@ namespace Gladiator
 			Team._teamNumber++;
 		}
 
+
 		/**
-		 * Ajouter un gladiateur à l'équipe
+		 * Ajouter un gladiateur à une équipe passée en paramètre
 		 * 
 		 * Une équipe est composée de trois gladiateurs maximum
 		 * Retourne true si l'execution s'est bien déroulée
 		 */
-		public bool addGladiator(Gladiator p_gladiator)
+		public void addGladiator(Gladiator p_gladiator)
 		{
 			// Regarder le nombre de gladiateurs actuels
+			int countGladiators = Gladiator.Count;
 
-			//this._gladiator.Count;
+			if(countGladiators == 3) {
+				throw new Exception ("Limite du nombre de gladiateur fixé à trois");
+			}
 
-			return true;
+			// Un nom de gladiateur doit exister une seule fois
+			foreach (Gladiator b_row in Gladiator) {
+				if (b_row.GladiatorName == p_gladiator.GladiatorName) {
+					throw new Exception ("Ce nom de gladiateur existe déjà dans cette équipe.");
+				}
+			}
+
+			// Insertion de l'équipe dans la collection
+			try {
+				this._gladiator.Add (p_gladiator);
+			} catch(Exception) {
+				throw new Exception ("Something wrong append.");
+			}
+		}
+
+		/**
+		 * Affichage des gladiateurs dans l'équipe
+		 */
+		public void showGladiatorsFromTeam()
+		{
+			// Regarder le nombre de gladiateurs actuels dans l'équipe
+			int countGladiators = Gladiator.Count;
+
+			if (countGladiators == 0) {
+				Console.WriteLine ("Aucun joueur dans cette équipe.");
+			} else {
+				// Affichage des équipes
+				Console.WriteLine ("Les gladiateurs de l'équipe:");
+				foreach (Gladiator b_row in Gladiator) {
+					Console.WriteLine (b_row.GladiatorName);
+				}
+			}
 		}
 
 		/**
@@ -114,11 +150,12 @@ namespace Gladiator
 		 * 
 		 * Retourne true si l'execution s'est bien déroulée
 		 */
-		public bool deleteGladiator()
+		public bool deleteGladiatorFromTeam(Gladiator p_gladiator)
 		{
-
-
-			return true;
+			if(Gladiator.Remove( p_gladiator)) {
+				return true;
+			}
+			return false;
 		}
 
 		/**
