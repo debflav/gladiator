@@ -52,6 +52,7 @@
     <Compile Include="Equipments\Attack\Spear.cs" />
     <Compile Include="Equipments\Attack\Sword.cs" />
     <Compile Include="Equipments\DefendAndAtack\Trident.cs" />
+    <Compile Include="Alert.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
