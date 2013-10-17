@@ -7,19 +7,6 @@ namespace Equipments.DefendAndAtack
 	public class Trident : Equipment, IAttack, IDefend
 	{
 
-		private double _luckyParry;
-
-		#region IDefend implementation
-		public double LuckyParry {
-			get {
-				return this._luckyParry;
-			}
-			set {
-				this._luckyParry = value;
-			}
-		}
-		#endregion
-
 		#region IAttack implementation
 
 		public void downDamage ()
@@ -32,7 +19,7 @@ namespace Equipments.DefendAndAtack
 
 		public Trident ():base("Tridant", 7)
 		{
-			this.LuckyParry = 0.1;
+			this.LuckyParry = 10;
 			this.LuckyTouch = 40;
 			this.Priority = 3;
 		}

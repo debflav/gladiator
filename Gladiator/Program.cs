@@ -80,6 +80,11 @@ namespace Gladiator
 			team1.deleteGladiatorFromTeam (gladiator1);
 			team1.showGladiatorsFromTeam();
 			Console.WriteLine( "---------------------------");
+
+			monGlatiateur.addEquipment (monCasque);
+			Console.WriteLine (monGlatiateur.defend (30).ToString());
+
+
 		}
 	}
 }

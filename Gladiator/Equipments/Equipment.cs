@@ -5,19 +5,25 @@ namespace Equipments
 	public abstract class Equipment
 	{
 
-		bool _use;
+		private bool _use;
 		public bool Use{
 			get{ return this._use; }
 			set{ this._use = value; } 
 		}
 
-		int _priority;
+		private int _priority;
 		public int Priority{
 			get{ return this._priority; }
 			set{ this._priority = value; }
 		}
 
-		int _luckyTouch;
+		private int _LuckyParry;
+		public int LuckyParry{ 
+			get{ return this._LuckyParry; }
+			set{ this._LuckyParry = value; }
+		}
+
+		private int _luckyTouch;
 		public int LuckyTouch{
 			get{ return this._luckyTouch; }
 			set{ this._luckyTouch = value; }
