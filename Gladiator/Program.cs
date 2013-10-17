@@ -11,6 +11,13 @@ namespace Gladiator
 		public static void Main (string[] args)
 		{
 
+			/* Menu */
+			Menu menu = new Menu ();
+			//menu.newPlayer ();
+			//menu.Show ();
+
+
+
 			Dagger maDague = new Dagger();
 			Net MonFilet = new Net();
 			Spear MaLance = new Spear ();
@@ -53,14 +60,26 @@ namespace Gladiator
 			Console.WriteLine (" ->  " + monGlatiateur.attack().ToString());
 
 
-//			player1.ajouterEquipe (team1);
-//			player1.ajouterEquipe (team2);
+			/*	*/
+			Console.WriteLine( "-----------Add Team------------");
+			if (!player1.addTeam (team1))
+				Console.WriteLine ( "Limite du nombre d'équipe fixé à cinq");
+			if (!player1.addTeam (team2))
+				Console.WriteLine ( "Limite du nombre d'équipe fixé à cinq");
+			player1.showTeam ();
+			Console.WriteLine( "-------------------------------");
 
-			/* Ajout d'un gladiateur */
-			//Gladiator.
-
-			/* Ajout de gladiateurs à une équipe */
-			//team1.addGladiator (team1);
+			/*	*/
+			Console.WriteLine( "-------Add Gladiator-------");
+			Gladiator gladiator1 = new Gladiator ("Boris");
+			if(!team1.addGladiator (gladiator1))
+				Console.WriteLine ("Vérifiez que l'équipe ne comporte pas déjà trois" +
+				"joueurs ou que ce nom de gladiateur n'existe pas déjà dans cette équipe");
+			team1.showGladiatorsFromTeam();
+			team2.showGladiatorsFromTeam();
+			team1.deleteGladiatorFromTeam (gladiator1);
+			team1.showGladiatorsFromTeam();
+			Console.WriteLine( "---------------------------");
 		}
 	}
 }
