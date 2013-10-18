@@ -19,7 +19,7 @@ namespace Equipments.Attack
 		{
 			this.LuckyTouch = 30;
 			this.Priority = 5;
-			this.Use = true;
+			this.Use = false;
 		}
 	}
 }

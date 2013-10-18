@@ -140,7 +140,8 @@ namespace Gladiator
 
 			// rechercher les equipements le plus fort
 			foreach(Equipment onEquiment in this.Equipments){
-				if (onEquiment.Use) {
+				// Teste su l'équipement n'a pas déjà été utilisé
+				if (!onEquiment.Use) {
 					if (nbEquipment < onEquiment.Priority) {
 						nbEquipment = onEquiment.Priority;
 					}
@@ -148,15 +149,21 @@ namespace Gladiator
 
 			}
 
-			// mettre l'équipement trouver a false (pour ne pas le réutiliser)
+			// mettre l'équipement trouver a true (pour ne pas le réutiliser)
 			foreach(Equipment onEquiment in this.Equipments){
+			
 				if (onEquiment is IAttack && onEquiment.Priority == nbEquipment) {
 					if (gauge) {
-						onEquiment.Use = false;
+						onEquiment.Use = true;
 					}
 					e = onEquiment;
 				}
 			}
+
+			if (e != null) {
+				Alert.showAlertWith ("arme selectionné", e.Name);
+			}
+
 
 			return e;
 
@@ -175,6 +182,8 @@ namespace Gladiator
 			int countDefend = 0;
 			int touch = 0;
 
+			//Alert.showAlertWith ("defend", p_equipment.Name);
+
 			// Compte le nombre de protection;
 			foreach (Equipment oneEquipment in this.Equipments) {
 			
@@ -185,25 +194,44 @@ namespace Gladiator
 			}
 
 			if (p_equipment != null) {
-				while(i <= p_equipment.LuckyTouch/10){
+
+
+				while(i <= (p_equipment.LuckyTouch/10)){
+
+					Alert.showAlertWith ("gladiator defender", this.GladiatorName);
 
 					// Random pour le toucher
-					int myNbRandom = this._ramdom.Next (0, 100);
+					RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider ();
+					byte[] data = new byte[4];
+					rng.GetBytes (data);
+					int value = BitConverter.ToInt32(data, 0);
+
+					int myNbRandom = value / 10000000;
 
 					// si le gladiateur est touché
 					if (myNbRandom >= 50) {
 
+						//Alert.showAlertWith ("dans le if", i.ToString());
+
 						// Protection
 						foreach (Equipment onEquiment in this.Equipments) {
 							//si arme de protection
-							if (onEquiment is IDefend && onEquiment.Use == true) {
-								//protection chance de toucher
+							if (onEquiment is IDefend && onEquiment.Use == false) {
+								//protection chance de protection
 								for(int j = 0; j<= onEquiment.LuckyParry/10; j++){
-									myNbRandom = this._ramdom.Next (0, 10);
 
-									if (myNbRandom >= 50) {
-										onEquiment.Use = false;
+									// Random pour le toucher
+									RNGCryptoServiceProvider rng2 = new RNGCryptoServiceProvider ();
+									byte[] data2 = new byte[4];
+									rng2.GetBytes (data2);
+									int value2 = BitConverter.ToInt32(data, 0);
+
+									int myNbRandom2 = value2 / 10000000;
+
+									if (myNbRandom2 >= 50) {
+										onEquiment.Use = true;
 										touch++;
+
 									}
 								}
 
@@ -211,6 +239,7 @@ namespace Gladiator
 
 						}
 
+						// quand le gladiateur est toucher on arrete la boucle
 						i = p_equipment.LuckyTouch / 10;
 
 					}
@@ -218,7 +247,10 @@ namespace Gladiator
 				}
 			}
 
-			if (touch >= countDefend) {
+			Alert.showAlertWith ("touch", touch.ToString ());
+			Alert.showAlertWith ("countDefend", countDefend.ToString ());
+
+			if (touch < countDefend) {
 				this.InGame = true;
 			} else {
 				this.InGame = false;

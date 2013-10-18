@@ -9,7 +9,7 @@ namespace Equipments.Defend
 		public LargeShield ():base("Bouclier rectangulaire", 8)
 		{
 			this.LuckyParry = 30;
-			this.Use = true;
+			this.Use = false;
 		}
 	}
 }

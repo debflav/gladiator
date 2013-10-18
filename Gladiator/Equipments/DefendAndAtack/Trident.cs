@@ -22,6 +22,7 @@ namespace Equipments.DefendAndAtack
 			this.LuckyParry = 10;
 			this.LuckyTouch = 40;
 			this.Priority = 3;
+			this.Use = false;
 		}
 
 	}

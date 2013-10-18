@@ -9,7 +9,7 @@ namespace Equipments.Defend
 		public Helmet ():base("Casque", 2)
 		{
 			this.LuckyParry = 10;
-			this.Use = true;
+			this.Use = false;
 		}
 
 	}

@@ -9,7 +9,7 @@ namespace Equipments.Defend
 		public SmallShield ():base("Petit bouclier rond", 5)
 		{
 			this.LuckyParry = 10;
-			this.Use = true;
+			this.Use = false;
 
 		}
 	}

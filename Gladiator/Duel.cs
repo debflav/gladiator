@@ -1,5 +1,6 @@
 using System;
 using Equipments;
+using Equipments.Interfaces;
 
 namespace Gladiator
 {
@@ -24,75 +25,57 @@ namespace Gladiator
 			this.Gladiator2 = gladiator2;
 		}
 
-
-		protected Gladiator getFirstCombattant(){
-
-			Equipment gladiator1Equipment = this.Gladiator1.attack (true);
-			Equipment gladiator2Equipment = this.Gladiator2.attack (true);
-
-			if (gladiator1Equipment == null || gladiator2Equipment == null) {
-				Alert.showAlert ("fuck");
-				return null;
-
-			} else if (gladiator1Equipment.Priority > gladiator2Equipment.Priority) {
-				return this.Gladiator1;
-
-			} else if (gladiator1Equipment.Priority == gladiator2Equipment.Priority) {
-
-				return null;
-
-			} else {
-				return this.Gladiator2;
-			}
-		
-		}
-		protected Gladiator getSecondCombattant(){
-
-			Equipment gladiator1Equipment = this.Gladiator1.attack (true);
-			Equipment gladiator2Equipment = this.Gladiator2.attack (true);
-
-			if (gladiator1Equipment == null || gladiator2Equipment == null) {
-				Alert.showAlert ("fuck");
-				return null;
-
-			} else if (gladiator1Equipment.Priority < gladiator2Equipment.Priority) {
-				return this.Gladiator1;
-			} else {
-				return this.Gladiator2;
-			}
-
-		}
-
 		public Gladiator InTheArena(){
 
 			int tour = 0;
+			bool isDamageForGladiator1 = false;
+			bool isDamageForGladiator2 = false;
 
 			// Tant que les 2 gladiateur sont en jeu de pas sortir de la boucle
 			while (this.Gladiator1.InGame && this.Gladiator2.InGame ) {
 
-	
-				Equipment gladiator1Equipment = this.Gladiator1.attack (false);
-				Equipment gladiator2Equipment = this.Gladiator2.attack (false);
+				Equipment gladiator1Equipment = this.Gladiator1.attack (true);
+				Equipment gladiator2Equipment = this.Gladiator2.attack (true);
+			
+				// L'attaquant utiliser le filet
+				if (gladiator1Equipment != null && gladiator1Equipment is Equipments.Attack.Net) {
+					isDamageForGladiator2 = true;
+				}
+				if (gladiator2Equipment != null && gladiator2Equipment is Equipments.Attack.Net) {
+					isDamageForGladiator1 = true;
+				}
+
+				// L'attaquant est mutilé
+				if (isDamageForGladiator1 && gladiator1Equipment != null) {
+				
+					((IAttack)gladiator1Equipment).downDamage ();
+					 
+				}
 
 				if (gladiator1Equipment == null) {
 
+					Alert.showAlert ("gladiator1Equipment == null");
 					this.Gladiator1.InGame = false;
 
 				} else if (gladiator2Equipment == null) {
 
+					Alert.showAlert ("gladiator2Equipment == null");
 					this.Gladiator2.InGame = false;
 
 				} else if (gladiator1Equipment.Priority == gladiator2Equipment.Priority) {
 
-					this.Gladiator2.defend (this.Gladiator1.attack(true));
-					this.Gladiator1.defend (this.Gladiator2.attack(true));
+					Alert.showAlert ("gladiator1Equipment.Priority == gladiator2Equipment.Priority");
+					this.Gladiator2.defend (gladiator1Equipment);
+					this.Gladiator1.defend (gladiator2Equipment);
 
 				} else if (gladiator1Equipment.Priority > gladiator2Equipment.Priority) {
 
+					Alert.showAlert ("gladiator1Equipment.Priority > gladiator2Equipment.Priority");
 					this.Gladiator2.defend (this.Gladiator1.attack(true));
 
 				} else if (gladiator1Equipment.Priority < gladiator2Equipment.Priority)  {
 				
+					Alert.showAlert ("gladiator1Equipment.Priority < gladiator2Equipment.Priority");
 					this.Gladiator1.defend (this.Gladiator2.attack(true));
 					
 				}
@@ -102,12 +85,18 @@ namespace Gladiator
 			}
 
 			//vérifier gagnant
-			if (this.Gladiator1.InGame) {
-				return this.Gladiator1;
-			}else{
-				return this.Gladiator2;
-			}
+			// Retourne null si les deux gladiateur se tue.
+			if (!this.Gladiator1.InGame && !this.Gladiator2.InGame) {
 
+				return null;
+			} else if (this.Gladiator2.InGame) {
+
+				return this.Gladiator2;
+			} else {
+
+				return this.Gladiator1;
+			}
+	
 
 		}
 

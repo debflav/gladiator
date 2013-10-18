@@ -87,21 +87,32 @@ namespace Gladiator
 			Console.WriteLine( "---------------------------");
 
 			Gladiator oneGladiateur = new Gladiator ("Zorg");
-			oneGladiateur.addEquipment (new Dagger());
-			oneGladiateur.addEquipment (new LargeShield());
+			oneGladiateur.addEquipment (new Trident());
+			oneGladiateur.addEquipment (new Helmet());
 			oneGladiateur.InGame = true;
-			Alert.showGladiator (oneGladiateur);
+			//Alert.showGladiator (oneGladiateur);
 
 			Gladiator twoGladiateur = new Gladiator ("molk");
-			twoGladiateur.addEquipment (new Dagger ());
+			twoGladiateur.addEquipment (new Sword ());
 			twoGladiateur.addEquipment (new SmallShield ());
 			twoGladiateur.InGame = true;
-			Alert.showGladiator (twoGladiateur);
+			//Alert.showGladiator (twoGladiateur);
 
 			Duel d = new Duel (oneGladiateur, twoGladiateur);
 
 			Gladiator winner = d.InTheArena ();
-			Alert.showGladiator (winner);
+			if (winner == null) {
+
+				Alert.showAlert ("les 2 gladiateurs sont mort");
+				
+			} else {
+			
+				Alert.showAlertWith ("winner", winner.GladiatorName);
+				Alert.showGladiator (winner);
+
+			}
+
+			//Alert.showGladiator (twoGladiateur);
 		
 
 
