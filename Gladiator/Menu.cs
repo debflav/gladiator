@@ -62,8 +62,8 @@ namespace Gladiator
 		public void addTeam()
 		{
 
-			Team team1 = new Team ("Les cougars", "On est des dingues !!!");
-			Console.WriteLine( "Créer: " + team1.TeamName);
+			//Team team1 = new Team ("Les cougars", "On est des dingues !!!", player1);
+			//Console.WriteLine( "Créer: " + team1.TeamName);
 			//Team team2 = new Team ("Les tigres", "Tigrou est notre ami");
 			this.Show ();
 		}

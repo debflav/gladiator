@@ -1,10 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Gladiator
 {
 	public class Team
 	{
+
+		private Player _owner;
+		public Player Owner {
+			get { return _owner; }
+			set {_owner = value; }
+		}
 
 		/**
 		 * Numéro d'equipe Static int
@@ -86,10 +93,12 @@ namespace Gladiator
 		/**
 		 * Crée une équipe à l'instanciation de la classe
 		 */
-		public Team (string p_teamName, string p_description)
+		public Team (string p_teamName, string p_description, Player p_owner)
 		{
 			this.TeamName 	 = p_teamName;
 			this.Description = p_description;
+			this.Owner = p_owner;
+			Owner.addTeam (this);
 
 			// Incremente le numéro de l'equipe
 			Team._teamNumber++;
@@ -174,6 +183,27 @@ namespace Gladiator
 		public double getPercentVictory()
 		{
 			return (double)this.WinNumber*(double)100/(double)this.MatchPlayed;
+		}
+
+
+		/**
+		 * Retourne le premier gladiateur de l'équipe (par priorité)
+		 */
+		public Gladiator gladiatorByPriority()
+		{
+			List<Gladiator> sortByGladiatorPriority = new List<Gladiator>();
+
+			sortByGladiatorPriority = (from b_glad in Gladiator
+			                           orderby b_glad.Priority descending
+			                           where b_glad.InGame == false
+			                           select b_glad).Take(1).ToList();
+			Gladiator glad = null;
+			foreach(Gladiator b_row in sortByGladiatorPriority) {
+				b_row.InGame = true;
+				glad = b_row;
+			}
+
+			return glad;
 		}
 
 	}
