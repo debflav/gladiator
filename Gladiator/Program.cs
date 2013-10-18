@@ -13,127 +13,110 @@ namespace Gladiator
 		{
 
 			/* Menu */
-			Menu menu = new Menu ();
-			//menu.newPlayer ();
-			//menu.Show ();
+			//Menu menu = new Menu ();
 
+			/* Création des joueurs */
+			Player player1 = new Player ("Michel", "Jean", "JeanMich");
+			Player player2 = new Player ("Toto", "Toto", "Toto");
+			Player player3 = new Player ("Tata", "Tata", "Tata");
+			Player player4 = new Player ("Tutu", "Tutu", "Tutu");
 
+			Gladiator gladiator1 = new Gladiator ("Zorg");
+			gladiator1.addEquipment (new Dagger());
+			gladiator1.addEquipment (new LargeShield());
 
-			Dagger maDague = new Dagger();
-			Net MonFilet = new Net();
-			Spear MaLance = new Spear ();
-			Sword monEpee = new Sword ();
-			Helmet monCasque = new Helmet ();
-			Console.WriteLine (monCasque.Name);
-			Console.WriteLine (MonFilet.Name);
-			Console.WriteLine (MaLance.Name);
-			Console.WriteLine (monEpee.Name);
+			Gladiator gladiator2 = new Gladiator ("molk");
+			gladiator2.addEquipment (new Net ());
+			gladiator2.addEquipment (new Helmet ());
 
-			/* Initialisation Joueurs */
-			DateTime date1 = new DateTime(2010, 1, 18);
-			DateTime date2 = new DateTime(2010, 5, 16);
+			Gladiator gladiator3 = new Gladiator ("Blop");
+			gladiator3.addEquipment (new Sword());
+			gladiator3.addEquipment (new SmallShield());
 
-			Player player1 = new Player ("Michel", "Jean", "JeanMich", date1);
-			Player player2 = new Player ("Toto", "Toto", "Toto", date2);
-			Player player3 = new Player ("Tata", "Tata", "Tata", date2);
-			Player player4 = new Player ("Tutu", "Tutu", "Tutu", date2);
+			Gladiator gladiator4 = new Gladiator ("plup");
+			gladiator4.addEquipment (new Dagger ());
+			gladiator4.addEquipment (new Net ());
 
+			Gladiator gladiator5 = new Gladiator ("blip");
+			gladiator5.addEquipment (new Spear());
+			gladiator5.addEquipment (new SmallShield());
 
-			Console.WriteLine(" ----------- TEST GLADIATOR ---------------- ");
+			Gladiator gladiator6 = new Gladiator ("Aey");
+			gladiator6.addEquipment (new Trident ());
+			gladiator6.addEquipment (new SmallShield ());
 
-			Gladiator monGlatiateur = new Gladiator ("Bim");
-			monGlatiateur.GladiatorWinNumber = 5;
-			monGlatiateur.GladiatorDefeatNumber = 5;
+			Gladiator gladiator7 = new Gladiator ("mechant");
+			gladiator7.addEquipment (new Dagger());
+			gladiator7.addEquipment (new LargeShield());
 
-			Console.WriteLine ("% victoir = " + monGlatiateur.getPercentVictory ());
-			Console.WriteLine (" NbEquipmentCurent " + monGlatiateur.NbEquipmentCurent);
+			Gladiator gladiator8 = new Gladiator ("gentil");
+			gladiator8.addEquipment (new Sword ());
+			gladiator8.addEquipment (new Helmet ());
 
-			monGlatiateur.addEquipment (maDague);
-			monGlatiateur.addEquipment (monEpee);
+			Gladiator gladiator9 = new Gladiator ("Captaine");
+			gladiator9.addEquipment (new Trident());
+			gladiator9.addEquipment (new LargeShield());
 
-			Console.WriteLine (" NbEquipmentCurent " + monGlatiateur.NbEquipmentCurent);
-
-			Console.WriteLine (" NbEquipmentCurent " + monGlatiateur.NbEquipmentCurent);
-			//Console.WriteLine (" ->  " + monGlatiateur.attack().ToString());
-
+			Gladiator gladiator10 = new Gladiator ("hulk");
+			gladiator10.addEquipment (new Dagger ());
+			gladiator10.addEquipment (new Helmet ());
 
 			/* Initialisation equipes */
 			Team team1 = new Team ("Les cougars", "On est des dingues !!!", player1);
 			Team team2 = new Team ("Les tigres", "Tigrou est notre ami", player1);
-			Team team3 = new Team ("Panpan", "Cartouche !!!", player3);
-			Team team4 = new Team ("Grincheux", "Les septs nains", player2);
-			Team team5 = new Team ("La belle & la bete", "humpf", player4);
-
-			/*	Ajouter une equipe à un joueur */
-			Console.WriteLine( "-----------Add Team------------");
-			if (!player1.addTeam (team1))
-				Console.WriteLine ( "Limite du nombre d'équipe fixé à cinq");
-				team1.WinNumber = 9;
-				team1.MatchPlayed = 12;
-			if (!player1.addTeam (team2))
-				Console.WriteLine ( "Limite du nombre d'équipe fixé à cinq");
-				team2.WinNumber = 10;
-				team2.MatchPlayed = 10;
-			if (!player3.addTeam (team3))
-				Console.WriteLine ( "Limite du nombre d'équipe fixé à cinq");
-				team3.WinNumber = 12;
-				team3.MatchPlayed = 26;
-			if (!player2.addTeam (team4))
-				Console.WriteLine ( "Limite du nombre d'équipe fixé à cinq");
-				team4.WinNumber = 1;
-				team4.MatchPlayed = 10;
-			if (!player4.addTeam (team5))
-				Console.WriteLine ( "Limite du nombre d'équipe fixé à cinq");
-				team5.WinNumber = 6;
-				team5.MatchPlayed = 20;
-			player1.showTeam ();
-			Console.WriteLine( "-------------------------------");
-
-			/*	Ajouter un gladiateur dans une équipe */
-			Console.WriteLine( "-------Add Gladiator-------");
-			Gladiator gladiator1 = new Gladiator ("Boris");
-			Gladiator gladiator2 = new Gladiator ("Bibi");
-			Gladiator gladiator3 = new Gladiator ("Bubule");
-			gladiator3.Priority = 3;
-			gladiator1.Priority = 1;
-
-			if(!team1.addGladiator (gladiator1))
-				Console.WriteLine ("Vérifiez que l'équipe ne comporte pas déjà trois" +
-				"joueurs ou que ce nom de gladiateur n'existe pas déjà dans cette équipe");
-			if(!team1.addGladiator (gladiator3))
-				Console.WriteLine ("Vérifiez que l'équipe ne comporte pas déjà trois" +
-				                   "joueurs ou que ce nom de gladiateur n'existe pas déjà dans cette équipe");
-			if(!team3.addGladiator (gladiator2))
-				Console.WriteLine ("Vérifiez que l'équipe ne comporte pas déjà trois" +
-				                   "joueurs ou que ce nom de gladiateur n'existe pas déjà dans cette équipe");
+			Team team3 = new Team ("Panpan", "Cartouche !!!", player1);
+			//Team team4 = new Team ("Grincheux", "Les septs nains", player1);
+			//Team team5 = new Team ("La belle & la bete", "humpf", player1);
 
 
-			team1.showGladiatorsFromTeam();
-			team2.showGladiatorsFromTeam();
-			//team1.deleteGladiatorFromTeam (gladiator1);
-			//team1.showGladiatorsFromTeam();
-			Console.WriteLine( "---------------------------");
+	
+			Team team20 = new Team ("Angora", "On est des dingues !!!", player2);
+			Team team6 = new Team ("Chaton", "Tigrou est notre ami", player2);
+			Team team7 = new Team ("Poulette", "Cartouche !!!", player2);
+			//Team team8 = new Team ("chiot", "Les septs nains", player2);
+			//Team team9 = new Team ("tigrette", "humpf", player2);
 
-			Console.WriteLine( "---------------------------");
-			Console.WriteLine( "Combat");
-			Console.WriteLine( "---------------------------");
+			Team team10 = new Team ("satan", "On est des dingues !!!", player3);
+			Team team11 = new Team ("mephistos", "Tigrou est notre ami", player3);
+			Team team12 = new Team ("metalica", "Cartouche !!!", player3);
+			//Team team13 = new Team ("666", "Les septs nains", player3);
+			//Team team14 = new Team ("Shetan", "humpf", player3);
 
-			Gladiator oneGladiateur = new Gladiator ("Zorg");
-			oneGladiateur.addEquipment (new Dagger());
-			oneGladiateur.addEquipment (new LargeShield());
-			oneGladiateur.InGame = true;
-			Alert.showGladiator (oneGladiateur);
+			Team team15 = new Team ("Mac", "On est des dingues !!!", player4);
+			Team team16 = new Team ("Linux", "Tigrou est notre ami", player4);
+			Team team17 = new Team ("PC", "Cartouche !!!", player4);
+			//Team team18 = new Team ("IBM", "Les septs nains", player4);
+			//Team team19 = new Team ("Amstrade", "humpf", player4);
 
-			Gladiator twoGladiateur = new Gladiator ("molk");
-			twoGladiateur.addEquipment (new Dagger ());
-			twoGladiateur.addEquipment (new SmallShield ());
-			twoGladiateur.InGame = true;
-			Alert.showGladiator (twoGladiateur);
+			//player2.showTeam ();
+			team1.WinNumber = 9;
+			team1.MatchPlayed = 20;
+			team2.WinNumber = 10;
+			team2.MatchPlayed = 11;
+			team3.WinNumber = 12;
+			team3.MatchPlayed = 26;
+			team20.WinNumber = 1;
+			team20.MatchPlayed = 12;
+			team6.WinNumber = 6;
+			team6.MatchPlayed = 20;
+			team7.WinNumber = 2;
+			team7.MatchPlayed = 12;
+			team10.WinNumber = 10;
+			team10.MatchPlayed = 10;
+			team11.WinNumber = 12;
+			team11.MatchPlayed = 16;
+			team12.WinNumber = 1;
+			team12.MatchPlayed = 9;
+			team15.WinNumber = 6;
+			team15.MatchPlayed = 20;
+			team16.WinNumber = 1;
+			team16.MatchPlayed = 100;
+			team17.WinNumber = 19;
+			team17.MatchPlayed = 20;
 
-			Duel d = new Duel (oneGladiateur, twoGladiateur);
 
-			Gladiator winner = d.InTheArena ();
-			Alert.showGladiator (winner);
+
+
 
 
 			/*	Ajouter une team au combat */
