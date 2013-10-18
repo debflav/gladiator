@@ -11,10 +11,14 @@ namespace Gladiator
 	public class Gladiator
 	{
 
-		const int NB_MAX_EQUIPMENT = 10;
 		private Random _ramdom;
 
 		// Constructeur --------------------------------
+		private const int _NB_MAX_EQUIPMENT = 10;
+		public int NB_MAX_EQUIPMENT{
+			get { return _NB_MAX_EQUIPMENT; }
+		}
+
 		private int _nbEquipmentCurent;
 		public int NbEquipmentCurent {
 			get { return this._nbEquipmentCurent; }
@@ -195,7 +199,6 @@ namespace Gladiator
 							if (onEquiment is IDefend && onEquiment.Use == true) {
 								//protection chance de toucher
 								for(int j = 0; j<= onEquiment.LuckyParry/10; j++){
-
 									myNbRandom = this._ramdom.Next (0, 10);
 
 									if (myNbRandom >= 50) {
@@ -223,33 +226,7 @@ namespace Gladiator
 
 		}
 
-		/**
-		 * Retourne un string pour visualiser le gladiator
-		 *
-		 * @return	string	
-		 */
-		public override string ToString(){
 
-			int nbResteOfPointEquipement = NB_MAX_EQUIPMENT - this.NbEquipmentCurent;
-		
-			string msg = "\n+++++++++++++++++++++++++++++++++++++++++\n\n";
-			msg += "\tGladiateur : " + this.GladiatorName + "\n";
-			msg += "\t-----------------------\n";
-			msg += "\tEquipement : \n";
-			msg += "\tNombre point equipement restant : " + nbResteOfPointEquipement.ToString()  +"\n";
-			foreach (Equipment oneEquipment in this.Equipments) {
-				msg += "\t - " + oneEquipment.Name + "\n";
-			}
-			msg += "\t-----------------------\n";
-			msg += "\tNombe de defaite : " + this.GladiatorDefeatNumber.ToString () + "\n";
-			msg += "\tNombe de victoir : " + this.GladiatorWinNumber.ToString () + "\n";
-			msg += "\tPrioritée : " + this.Priority.ToString() + "\n";
-			msg += "\tIn game : " + this.InGame.ToString () + "\n";
-			msg += "\n+++++++++++++++++++++++++++++++++++++++++\n";
-
-			return msg;
-
-		}
 
 
 

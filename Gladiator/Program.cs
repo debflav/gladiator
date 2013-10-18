@@ -90,19 +90,19 @@ namespace Gladiator
 			oneGladiateur.addEquipment (new Dagger());
 			oneGladiateur.addEquipment (new LargeShield());
 			oneGladiateur.InGame = true;
-			Console.WriteLine (oneGladiateur.ToString());
+			Alert.showGladiator (oneGladiateur);
 
 			Gladiator twoGladiateur = new Gladiator ("molk");
 			twoGladiateur.addEquipment (new Dagger ());
 			twoGladiateur.addEquipment (new SmallShield ());
 			twoGladiateur.InGame = true;
-			Console.WriteLine (twoGladiateur.ToString());
+			Alert.showGladiator (twoGladiateur);
 
 			Duel d = new Duel (oneGladiateur, twoGladiateur);
 
 			Gladiator winner = d.InTheArena ();
+			Alert.showGladiator (winner);
 		
-			Alert.shawAlertWithTitle ("\tWINNER", winner.ToString());
 
 
 		}
