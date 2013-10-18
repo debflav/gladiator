@@ -73,11 +73,6 @@ namespace Gladiator
 			set { this._equipments = value; }
 		}
 
-		private List<Equipment> _equipmentsAttack;
-		public List<Equipment> EquipmentsAttack {
-			get { return this._equipmentsAttack; }
-			set { this.EquipmentsAttack = value; }
-		}
 
 		/**
 		 * Constructeur
@@ -120,7 +115,7 @@ namespace Gladiator
 				this.NbEquipmentCurent = this.NbEquipmentCurent + nbPointEquipment;
 			} else {
 				int reste = NB_MAX_EQUIPMENT - this.NbEquipmentCurent ;
-				Alert.showAlert ("Il reste " + reste.ToString() + " point(s) d'équipement au gladiateur !");
+				Alert.showAlert ("Vous avez dépassé la limite de " + reste.ToString() + " point(s) d'équipement au gladiateur: " + this.GladiatorName);
 			}
 
 		}

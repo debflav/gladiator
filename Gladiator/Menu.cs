@@ -52,10 +52,8 @@ namespace Gladiator
 			Console.WriteLine ("Entrer votre pseudo:");
 			string pseudo = Console.ReadLine ();
 
-			// Date courante
-			DateTime currentTime = DateTime.Now;
 
-			Player player1 = new Player (lastname, firstname, pseudo, currentTime);
+			Player player1 = new Player (lastname, firstname, pseudo);
 			Console.WriteLine ("Joueur " + player1.Pseudo + " crée avec succès");
 		}
 

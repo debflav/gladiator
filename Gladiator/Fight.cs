@@ -55,7 +55,7 @@ namespace Gladiator
 
 			int countFight = 0;
 			// Boucle sur le nombre d'équipes
-			while(countFight < countTeam/4) {
+			while(countFight < countTeam/2) {
 				countFight++;
 
 				List<Team> sortByStrongestTeam = (from b_team in Team
@@ -67,6 +67,7 @@ namespace Gladiator
 
 				// Sélection des deux equipes les plus fortes
 				foreach (Team b_rowT in sortByStrongestTeam) {
+					//Alert.showAlert ("Team: " + b_rowT.TeamName);
 					b_rowT.InGame = true;
 
 					// Sélection des deux joueurs avec la plus grande priorité
@@ -79,15 +80,15 @@ namespace Gladiator
 					gladiators.Add (gladiator);
 					//Console.WriteLine (gladiator.GladiatorName);
 
-					/*foreach(Gladiator b_rowG in gladiators) {
-						Alert.showAlert ( b_rowG.GladiatorName);
-					}*/
+					foreach(Gladiator b_rowG in gladiators) {
+						//Alert.showAlert ( "---------------" + b_rowG.GladiatorName);
+					}
 
 
 				}
 				Duel duel = new Duel (gladiators[0], gladiators[1]);
 				Gladiator glad = duel.InTheArena ();
-				Alert.showGladiator (glad);
+				//Alert.showGladiator (glad); -- Gagnant
 			}
 		}
 
@@ -95,8 +96,11 @@ namespace Gladiator
 		// DEBUG ?
 		public void teamListShow()
 		{
-			foreach (Team b_row in Team) {
-				Console.WriteLine( "-" + b_row.TeamName + b_row.Owner.Pseudo);
+			foreach (Team b_rowTeam in Team) {
+				Console.WriteLine( "- " + b_rowTeam.TeamName + " de "+ b_rowTeam.Owner.Pseudo);
+				foreach(Gladiator b_rowGlad in b_rowTeam.Gladiator) {
+					Console.WriteLine (b_rowGlad.GladiatorName);
+				}
 			}
 		}
 	}

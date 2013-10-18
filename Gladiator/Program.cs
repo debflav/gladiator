@@ -39,11 +39,11 @@ namespace Gladiator
 
 			Gladiator gladiator5 = new Gladiator ("blip");
 			gladiator5.addEquipment (new Spear());
-			gladiator5.addEquipment (new SmallShield());
+			gladiator5.addEquipment (new Helmet());
 
 			Gladiator gladiator6 = new Gladiator ("Aey");
 			gladiator6.addEquipment (new Trident ());
-			gladiator6.addEquipment (new SmallShield ());
+			gladiator6.addEquipment (new Net ());
 
 			Gladiator gladiator7 = new Gladiator ("mechant");
 			gladiator7.addEquipment (new Dagger());
@@ -54,7 +54,7 @@ namespace Gladiator
 			gladiator8.addEquipment (new Helmet ());
 
 			Gladiator gladiator9 = new Gladiator ("Captaine");
-			gladiator9.addEquipment (new Trident());
+			gladiator9.addEquipment (new Dagger());
 			gladiator9.addEquipment (new LargeShield());
 
 			Gladiator gladiator10 = new Gladiator ("hulk");
@@ -136,12 +136,36 @@ namespace Gladiator
 			team7.addGladiator (gladiator7);
 			team7.addGladiator (gladiator8);
 
+			// Player 3
+			team10.addGladiator (gladiator9);
+			team10.addGladiator (gladiator10);
+			team10.addGladiator (gladiator1);
+			team11.addGladiator (gladiator2);
+			team11.addGladiator (gladiator3);
+			team11.addGladiator (gladiator4);
+			team12.addGladiator (gladiator5);
+			team12.addGladiator (gladiator6);
+			team12.addGladiator (gladiator7);
+
+			// Player 4
+			team15.addGladiator (gladiator8);
+			team15.addGladiator (gladiator9);
+			team15.addGladiator (gladiator10);
+			team16.addGladiator (gladiator1);
+			team16.addGladiator (gladiator2);
+			team16.addGladiator (gladiator3);
+			team17.addGladiator (gladiator4);
+			team17.addGladiator (gladiator5);
+			team17.addGladiator (gladiator6);
+
 			/*	Ajouter une team au combat */
-			Console.WriteLine( "-----------Add Team------------");
 			Fight fight = new Fight ();
 			fight.addTeamToFight(team1);
-
-
+			fight.addTeamToFight(team5);
+			fight.addTeamToFight(team10);
+			fight.addTeamToFight(team17);
+			fight.initializeFight ();
+			//fight.teamListShow ();
 
 		}
 	}
