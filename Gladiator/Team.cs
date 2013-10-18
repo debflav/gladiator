@@ -98,6 +98,7 @@ namespace Gladiator
 			this.TeamName 	 = p_teamName;
 			this.Description = p_description;
 			this.Owner = p_owner;
+			Owner.addTeam (this);
 
 			// Incremente le numéro de l'equipe
 			Team._teamNumber++;
