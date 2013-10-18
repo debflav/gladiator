@@ -6,6 +6,12 @@ namespace Gladiator
 	public class Team
 	{
 
+		private Player _owner;
+		public Player Owner {
+			get { return _owner; }
+			set {_owner = value; }
+		}
+
 		/**
 		 * Numéro d'equipe Static int
 		 */
@@ -86,10 +92,11 @@ namespace Gladiator
 		/**
 		 * Crée une équipe à l'instanciation de la classe
 		 */
-		public Team (string p_teamName, string p_description)
+		public Team (string p_teamName, string p_description, Player p_owner)
 		{
 			this.TeamName 	 = p_teamName;
 			this.Description = p_description;
+			this.Owner = p_owner;
 
 			// Incremente le numéro de l'equipe
 			Team._teamNumber++;
