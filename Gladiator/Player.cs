@@ -53,12 +53,12 @@ namespace Gladiator
 		/**
 		 * Constructeur de Player
 		 */
-		public Player (string p_lastname, string p_firstname, string p_pseudo, DateTime p_registrationDate)
+		public Player (string p_lastname, string p_firstname, string p_pseudo)
 		{
 			this.Lastname 			= p_lastname;
 			this.Firstname 			= p_firstname;
 			this.Pseudo 			= p_pseudo;
-			this.RegistrationDate 	= p_registrationDate;
+			this.RegistrationDate 	= DateTime.Now;
 		}
 
 
@@ -72,6 +72,7 @@ namespace Gladiator
 			int teamNumber = Team.Count;
 
 			if(teamNumber >= 5) {
+				Alert.showAlert ("Limite du nombre d'équipe fixé à cinq");
 				return false;
 			}
 
