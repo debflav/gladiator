@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 namespace Gladiator
 {
 
@@ -57,11 +58,6 @@ namespace Gladiator
 
 
 		}
-
-		/*private string sortByStrongestTeam(  Team b_row)
-		{
-			return b_row.getPercentVictory;
-		}*/
 
 
 		// DEBUG ?

@@ -96,6 +96,7 @@ namespace Gladiator
 				Console.WriteLine( "-" + b_row.TeamName);
 			}
 		}
+
 	}
 }
 

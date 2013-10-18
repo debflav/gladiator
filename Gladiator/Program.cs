@@ -103,7 +103,6 @@ namespace Gladiator
 			monGlatiateur.addEquipment (monCasque);
 			Console.WriteLine (monGlatiateur.defend (30).ToString());
 
-
 			/*	Ajouter une team au combat */
 			Console.WriteLine( "-----------Add Team------------");
 			Fight fight = new Fight ();
