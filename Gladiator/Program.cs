@@ -67,8 +67,6 @@ namespace Gladiator
 			Team team3 = new Team ("Panpan", "Cartouche !!!", player1);
 			//Team team4 = new Team ("Grincheux", "Les septs nains", player1);
 			//Team team5 = new Team ("La belle & la bete", "humpf", player1);
-
-
 	
 			Team team20 = new Team ("Angora", "On est des dingues !!!", player2);
 			Team team6 = new Team ("Chaton", "Tigrou est notre ami", player2);
@@ -125,60 +123,8 @@ namespace Gladiator
 			fight.addTeamToFight(team1);
 			fight.addTeamToFight(team2);
 			fight.addTeamToFight(team3);
-			fight.addTeamToFight(team4);
-			fight.addTeamToFight(team5);
 
-<<<<<<< HEAD
-			/*	*/
-			Console.WriteLine( "-------Add Gladiator-------");
-			Gladiator gladiator1 = new Gladiator ("Boris");
-			if(!team1.addGladiator (gladiator1))
-				Console.WriteLine ("Vérifiez que l'équipe ne comporte pas déjà trois" +
-				"joueurs ou que ce nom de gladiateur n'existe pas déjà dans cette équipe");
-			team1.showGladiatorsFromTeam();
-			team2.showGladiatorsFromTeam();
-			team1.deleteGladiatorFromTeam (gladiator1);
-			team1.showGladiatorsFromTeam();
-			Console.WriteLine( "---------------------------");
 
-			Console.WriteLine( "---------------------------");
-			Console.WriteLine( "Combat");
-			Console.WriteLine( "---------------------------");
-
-			Gladiator oneGladiateur = new Gladiator ("Zorg");
-			oneGladiateur.addEquipment (new Trident());
-			oneGladiateur.addEquipment (new Helmet());
-			oneGladiateur.InGame = true;
-			//Alert.showGladiator (oneGladiateur);
-
-			Gladiator twoGladiateur = new Gladiator ("molk");
-			twoGladiateur.addEquipment (new Sword ());
-			twoGladiateur.addEquipment (new SmallShield ());
-			twoGladiateur.InGame = true;
-			//Alert.showGladiator (twoGladiateur);
-
-			Duel d = new Duel (oneGladiateur, twoGladiateur);
-
-			Gladiator winner = d.InTheArena ();
-			if (winner == null) {
-
-				Alert.showAlert ("les 2 gladiateurs sont mort");
-				
-			} else {
-			
-				Alert.showAlertWith ("winner", winner.GladiatorName);
-				Alert.showGladiator (winner);
-
-			}
-
-			//Alert.showGladiator (twoGladiateur);
-		
-=======
->>>>>>> ca31aaed7c86fdc92abfe0a9836ea0a5688a67b8
-
-			fight.initializeFight ();
-			//fight.teamListShow ();
-			Console.WriteLine( "-------------------------------");
 
 		}
 	}
