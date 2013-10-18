@@ -92,13 +92,26 @@ namespace Gladiator
 			/*	Ajouter un gladiateur dans une équipe */
 			Console.WriteLine( "-------Add Gladiator-------");
 			Gladiator gladiator1 = new Gladiator ("Boris");
+			Gladiator gladiator2 = new Gladiator ("Bibi");
+			Gladiator gladiator3 = new Gladiator ("Bubule");
+			gladiator3.Priority = 3;
+			gladiator1.Priority = 1;
+
 			if(!team1.addGladiator (gladiator1))
 				Console.WriteLine ("Vérifiez que l'équipe ne comporte pas déjà trois" +
 				"joueurs ou que ce nom de gladiateur n'existe pas déjà dans cette équipe");
+			if(!team1.addGladiator (gladiator3))
+				Console.WriteLine ("Vérifiez que l'équipe ne comporte pas déjà trois" +
+				                   "joueurs ou que ce nom de gladiateur n'existe pas déjà dans cette équipe");
+			if(!team3.addGladiator (gladiator2))
+				Console.WriteLine ("Vérifiez que l'équipe ne comporte pas déjà trois" +
+				                   "joueurs ou que ce nom de gladiateur n'existe pas déjà dans cette équipe");
+
+
 			team1.showGladiatorsFromTeam();
 			team2.showGladiatorsFromTeam();
-			team1.deleteGladiatorFromTeam (gladiator1);
-			team1.showGladiatorsFromTeam();
+			//team1.deleteGladiatorFromTeam (gladiator1);
+			//team1.showGladiatorsFromTeam();
 			Console.WriteLine( "---------------------------");
 
 			Console.WriteLine( "---------------------------");
@@ -121,7 +134,7 @@ namespace Gladiator
 
 			Gladiator winner = d.InTheArena ();
 			Alert.showGladiator (winner);
-		
+
 
 			/*	Ajouter une team au combat */
 			Console.WriteLine( "-----------Add Team------------");
@@ -131,6 +144,8 @@ namespace Gladiator
 			fight.addTeamToFight(team3);
 			fight.addTeamToFight(team4);
 			fight.addTeamToFight(team5);
+
+
 			fight.initializeFight ();
 			//fight.teamListShow ();
 			Console.WriteLine( "-------------------------------");

@@ -41,22 +41,54 @@ namespace Gladiator
 		}
 
 		/**
-		 * (findOppponent) Trouve les adversaires suivant leur % de victoires
+		 *  Trouve les équipes qui vont combattre suivant leur pourcentage
+		 *  de victoire (les plus fortes contre les plus fortes).
 		 */
 		public void initializeFight()
 		{
-			int countFighter = Team.Count;
+			int countTeam = Team.Count;
 
-			if (countFighter % 2 == 1) {
+			if (countTeam % 2 == 1) {
 				Alert.showAlert ("Le combat ne peut pas commencer avec un nombre d'équipe impair.");
 			}
 
-			List<Team> sortByStrongestTeam = Team.OrderBy (s => s.getPercentVictory()).ToList();
-			/*foreach (Team b_row in sortByStrongestTeam) {
-				Console.WriteLine (b_row.getPercentVictory());
-			}*/
+
+			int countFight = 0;
+			// Boucle sur le nombre d'équipes
+			while(countFight < countTeam/4) {
+				countFight++;
+
+				List<Team> sortByStrongestTeam = (from b_team in Team
+			                                      orderby b_team.getPercentVictory() descending
+			                                      where b_team.InGame == false
+			                                      select b_team).Take(2).ToList();
+
+				List<Gladiator> gladiators = new List<Gladiator>();
+
+				// Sélection des deux equipes les plus fortes
+				foreach (Team b_rowT in sortByStrongestTeam) {
+					b_rowT.InGame = true;
+
+					// Sélection des deux joueurs avec la plus grande priorité
+					Gladiator gladiator = b_rowT.gladiatorByPriority ();
+
+					if (gladiator == null) {
+						break;
+					}
+
+					gladiators.Add (gladiator);
+					//Console.WriteLine (gladiator.GladiatorName);
+
+					/*foreach(Gladiator b_rowG in gladiators) {
+						Alert.showAlert ( b_rowG.GladiatorName);
+					}*/
 
 
+				}
+				Duel duel = new Duel (gladiators[0], gladiators[1]);
+				Gladiator glad = duel.InTheArena ();
+				Alert.showGladiator (glad);
+			}
 		}
 
 

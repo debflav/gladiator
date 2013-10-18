@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Gladiator
 {
@@ -181,6 +182,27 @@ namespace Gladiator
 		public double getPercentVictory()
 		{
 			return (double)this.WinNumber*(double)100/(double)this.MatchPlayed;
+		}
+
+
+		/**
+		 * Retourne le premier gladiateur de l'équipe (par priorité)
+		 */
+		public Gladiator gladiatorByPriority()
+		{
+			List<Gladiator> sortByGladiatorPriority = new List<Gladiator>();
+
+			sortByGladiatorPriority = (from b_glad in Gladiator
+			                           orderby b_glad.Priority descending
+			                           where b_glad.InGame == false
+			                           select b_glad).Take(1).ToList();
+			Gladiator glad = null;
+			foreach(Gladiator b_row in sortByGladiatorPriority) {
+				b_row.InGame = true;
+				glad = b_row;
+			}
+
+			return glad;
 		}
 
 	}
