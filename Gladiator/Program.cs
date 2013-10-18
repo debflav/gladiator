@@ -3,6 +3,7 @@ using Equipments;
 using Equipments.Attack;
 using Equipments.Defend;
 using Equipments.Interfaces;
+using Equipments.DefendAndAtack;
 
 namespace Gladiator
 {
@@ -53,7 +54,7 @@ namespace Gladiator
 			Console.WriteLine (" NbEquipmentCurent " + monGlatiateur.NbEquipmentCurent);
 
 			Console.WriteLine (" NbEquipmentCurent " + monGlatiateur.NbEquipmentCurent);
-			Console.WriteLine (" ->  " + monGlatiateur.attack().ToString());
+			//Console.WriteLine (" ->  " + monGlatiateur.attack().ToString());
 
 
 			/* Initialisation equipes */
@@ -100,8 +101,27 @@ namespace Gladiator
 			team1.showGladiatorsFromTeam();
 			Console.WriteLine( "---------------------------");
 
-			monGlatiateur.addEquipment (monCasque);
-			Console.WriteLine (monGlatiateur.defend (30).ToString());
+			Console.WriteLine( "---------------------------");
+			Console.WriteLine( "Combat");
+			Console.WriteLine( "---------------------------");
+
+			Gladiator oneGladiateur = new Gladiator ("Zorg");
+			oneGladiateur.addEquipment (new Dagger());
+			oneGladiateur.addEquipment (new LargeShield());
+			oneGladiateur.InGame = true;
+			Alert.showGladiator (oneGladiateur);
+
+			Gladiator twoGladiateur = new Gladiator ("molk");
+			twoGladiateur.addEquipment (new Dagger ());
+			twoGladiateur.addEquipment (new SmallShield ());
+			twoGladiateur.InGame = true;
+			Alert.showGladiator (twoGladiateur);
+
+			Duel d = new Duel (oneGladiateur, twoGladiateur);
+
+			Gladiator winner = d.InTheArena ();
+			Alert.showGladiator (winner);
+		
 
 			/*	Ajouter une team au combat */
 			Console.WriteLine( "-----------Add Team------------");
