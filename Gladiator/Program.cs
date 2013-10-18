@@ -114,9 +114,6 @@ namespace Gladiator
 
 
 
-
-
-
 			/*	Ajouter une team au combat */
 			Console.WriteLine( "-----------Add Team------------");
 			Fight fight = new Fight ();
