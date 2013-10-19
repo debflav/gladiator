@@ -279,8 +279,7 @@ namespace Gladiator
 				}
 			}
 
-			Alert.showAlertWith ("nb de Toucher", touch.ToString ());
-			Alert.showAlertWith ("Nombre de point de defence", countDefend.ToString ());
+			Alert.showAlertWith ("Nombre de vies restantes", (countDefend-touch).ToString());
 
 			if (touch >= countDefend) {
 				Alert.showRedAlert (this.GladiatorName + " est mort ! ");
