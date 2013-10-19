@@ -17,6 +17,12 @@ namespace Gladiator
 
 		}
 
+		public static void showRedAlert (string message){
+			Console.ForegroundColor = ConsoleColor.Red;
+			Console.WriteLine(message);
+			Console.ResetColor();
+		}
+
 		/**
 		 * Retourne un string pour visualiser le gladiator
 		 *
@@ -39,6 +45,7 @@ namespace Gladiator
 			msg += "\tNombe de victoir : " + p_gladiator.GladiatorWinNumber.ToString () + "\n";
 			msg += "\tPrioritée : " + p_gladiator.Priority.ToString() + "\n";
 			msg += "\tIn game : " + p_gladiator.InGame.ToString () + "\n";
+			msg += "\tNombre points de defence (nombres d'armes) : " + p_gladiator.NbPointDefence.ToString () + "\n";
 			msg += "\n+++++++++++++++++++++++++++++++++++++++++\n";
 
 			Console.WriteLine( msg );

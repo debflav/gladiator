@@ -5,16 +5,7 @@ namespace Equipments.Attack
 {
 	public class Net : Equipment, IAttack
 	{
-
-		#region IAttack implementation
-
-		public void downDamage ()
-		{
-			this.LuckyTouch = this.LuckyTouch / 2;
-		}
-
-		#endregion
-
+	
 		public Net ():base("Filet", 3)
 		{
 			this.LuckyTouch = 30;

@@ -25,6 +25,12 @@ namespace Gladiator
 			set { this._nbEquipmentCurent = value; }
 		}
 
+		private int _nbPointDefence;
+		public int NbPointDefence {
+			get { return this._nbPointDefence; }
+			set { this._nbPointDefence = value; }
+		}
+
 
 		private string _gladiatorName;
 		public string GladiatorName {
@@ -73,11 +79,6 @@ namespace Gladiator
 			set { this._equipments = value; }
 		}
 
-		private List<Equipment> _equipmentsAttack;
-		public List<Equipment> EquipmentsAttack {
-			get { return this._equipmentsAttack; }
-			set { this.EquipmentsAttack = value; }
-		}
 
 		/**
 		 * Constructeur
@@ -90,6 +91,22 @@ namespace Gladiator
 			this._ramdom = new Random ();
 		}
 		// ----------------------------------------
+
+
+		/**
+		 * Calcule du nombre de point de defence
+		 * 
+		 * @return	int
+		 */
+		public int calculateNBPointDefence(){
+			int countDefend = 0;
+			foreach (Equipment oneEquipment in this.Equipments) {
+				if (oneEquipment is IDefend) {
+					countDefend++;
+				}
+			}
+			return countDefend;
+		}
 
 		/**
 		 * Calcule du poucentage de victoir
@@ -118,6 +135,9 @@ namespace Gladiator
 			if ((nbPointEquipment + this.NbEquipmentCurent) <= NB_MAX_EQUIPMENT) {
 				this.Equipments.Add (onEquipment);
 				this.NbEquipmentCurent = this.NbEquipmentCurent + nbPointEquipment;
+				if (onEquipment is IDefend) {
+					this.NbPointDefence++;
+				}
 			} else {
 				int reste = NB_MAX_EQUIPMENT - this.NbEquipmentCurent ;
 				Alert.showAlert ("Il reste " + reste.ToString() + " point(s) d'équipement au gladiateur !");
@@ -125,16 +145,43 @@ namespace Gladiator
 
 		}
 
+		/**
+		 * divise par 2 tous les pourcentage de chance des equipements du gladiateur
+		 * 
+		 * 
+		 */
+		public void downDamage()
+		{
+			foreach (Equipment onEquipement in this.Equipments) {
+				if (onEquipement is IAttack) {
+					onEquipement.LuckyTouch = onEquipement.LuckyTouch / 2;
+				}
+			}
+		}
+
+		/**
+		 *	Réarme le gladiteur : Remet les equipement.use à false.
+		 *
+		 */
+		public void rearmament(){
+
+			foreach (Equipment onEquipement in this.Equipments) {
+				if (onEquipement is IAttack) {
+					onEquipement.Use = false;
+				}
+			}
+
+		}
 
 		/**
 		 * Renvois une arme au moment de l'attaque
 		 * Avec ordre d'initiative des armes (Filet - Lance - Trident - Épée - Dague
-		 * 
-		 * @param	bool false si premier passe d'arme true si Attack réel
+		 *
 		 * @return	int	chance de toucher l'adversaire
 		 */
-		public Equipment attack(bool gauge)
+		public Equipment attack()
 		{
+
 			int nbEquipment = 0;
 			Equipment e = null;
 
@@ -153,18 +200,9 @@ namespace Gladiator
 			foreach(Equipment onEquiment in this.Equipments){
 			
 				if (onEquiment is IAttack && onEquiment.Priority == nbEquipment) {
-					if (gauge) {
-						onEquiment.Use = true;
-					}
 					e = onEquiment;
 				}
 			}
-
-			if (e != null) {
-				Alert.showAlertWith ("arme selectionné", e.Name);
-			}
-
-
 			return e;
 
 		}
@@ -179,81 +217,76 @@ namespace Gladiator
 		public void defend(Equipment p_equipment)
 		{
 			int i = 0;
-			int countDefend = 0;
+			int countDefend = this.NbPointDefence;
 			int touch = 0;
-
-			//Alert.showAlertWith ("defend", p_equipment.Name);
-
-			// Compte le nombre de protection;
-			foreach (Equipment oneEquipment in this.Equipments) {
-			
-				if (oneEquipment is IDefend) {
-					countDefend++;
-				}
-				
-			}
 
 			if (p_equipment != null) {
 
-
+			// Attack autent de fois que l'arme à de chance de toucher
 				while(i <= (p_equipment.LuckyTouch/10)){
 
-					Alert.showAlertWith ("gladiator defender", this.GladiatorName);
+					Alert.showAlert (this.GladiatorName + " est loupé ! " );
 
 					// Random pour le toucher
-					RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider ();
-					byte[] data = new byte[4];
-					rng.GetBytes (data);
-					int value = BitConverter.ToInt32(data, 0);
-
-					int myNbRandom = value / 10000000;
+					int myNbRandom = _ramdom.Next (0, 10);
 
 					// si le gladiateur est touché
-					if (myNbRandom >= 50) {
+					if (myNbRandom >= 5) {
 
-						//Alert.showAlertWith ("dans le if", i.ToString());
-
+						Alert.showAlert (this.GladiatorName + " est visé");
+					
 						// Protection
 						foreach (Equipment onEquiment in this.Equipments) {
+
 							//si arme de protection
 							if (onEquiment is IDefend && onEquiment.Use == false) {
-								//protection chance de protection
-								for(int j = 0; j<= onEquiment.LuckyParry/10; j++){
 
-									// Random pour le toucher
-									RNGCryptoServiceProvider rng2 = new RNGCryptoServiceProvider ();
-									byte[] data2 = new byte[4];
-									rng2.GetBytes (data2);
-									int value2 = BitConverter.ToInt32(data, 0);
+								Alert.showAlert ("Parade avec " + onEquiment.Name + " !");
+							
+								myNbRandom = _ramdom.Next (0, 10);
 
-									int myNbRandom2 = value2 / 10000000;
+								// test si le gladiateur n'a pas contré la parade
+								if (myNbRandom >= 5) {
+									Alert.showAlert (this.GladiatorName + " n'a pas bloqué l'attaque");
 
-									if (myNbRandom2 >= 50) {
+									// l'adversaire à ustilisé un filet
+									if (p_equipment is Net) {
+										// appliquer un domage au arme
+										Alert.showAlert ("////" + this.GladiatorName + "// est empetré dans un fillet");
+										this.downDamage ();
+										break;
+									} else {
+										// sinon enlever de la vie au gladiateur
 										onEquiment.Use = true;
+										this.NbPointDefence--;
 										touch++;
-
 									}
+
+
+								} else {
+								Alert.showAlert (this.GladiatorName + " a bloqué l'attaque");
+								break;
 								}
 
 							}
 
 						}
-
 						// quand le gladiateur est toucher on arrete la boucle
-						i = p_equipment.LuckyTouch / 10;
-
+						i = (p_equipment.LuckyTouch / 10);
 					}
+
 					i++;
 				}
 			}
 
-			Alert.showAlertWith ("touch", touch.ToString ());
-			Alert.showAlertWith ("countDefend", countDefend.ToString ());
+			Alert.showAlertWith ("nb de Toucher", touch.ToString ());
+			Alert.showAlertWith ("Nombre de point de defence", countDefend.ToString ());
 
-			if (touch < countDefend) {
-				this.InGame = true;
-			} else {
+			if (touch >= countDefend) {
+				Alert.showRedAlert (this.GladiatorName + " est mort ! ");
 				this.InGame = false;
+			} else {
+				this.InGame = true;
 			}
 
 		}
