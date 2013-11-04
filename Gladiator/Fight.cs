@@ -60,43 +60,36 @@ namespace Gladiator
 
 				List<Team> sortByStrongestTeam = (from b_team in Team
 			                                      orderby b_team.getPercentVictory() descending
-			                                      where b_team.InGame == false
+			                                      where b_team.InGame == true
 			                                      select b_team).Take(2).ToList();
 
-				//List<Gladiator> gladiators = new List<Gladiator>();
-
-				// Sélection des deux equipes les plus fortes
-				/*foreach (Team b_rowT in sortByStrongestTeam) {
-					//b_rowT.InGame = true;
-
-					// Sélection des deux joueurs avec la plus grande priorité
-					Gladiator gladiator = b_rowT.gladiatorByPriority ();
-
-					if (gladiator == null) {
-						break;
-					}
-
-					gladiators.Add (gladiator);
-					//Console.WriteLine (gladiator.GladiatorName);
-
-					/*foreach(Gladiator b_rowG in gladiators) {
-						Alert.showAlert ( b_rowG.GladiatorName);
-					}*/
-
-					// If we have two gladiators we launch the duel
-				//}
 				do {
 					List<Gladiator> gladiators = this.getTwoOpponents (sortByStrongestTeam);
+
 					if (gladiators.Count == 2) {
 						Duel duel = new Duel (gladiators [0], gladiators [1]);
 						Gladiator glad = duel.InTheArena ();
-
-						Alert.showGladiator (glad);
+						if(glad == null) {
+							Alert.showAlert("Les deux adversaires se sont entretués; les idiots =)");
+						} else {
+							Alert.showGladiator (glad);
+						}
 					}
-				} while(sortByStrongestTeam[0].teamGladiatorInGame() || sortByStrongestTeam[1].teamGladiatorInGame());
+				} while(sortByStrongestTeam[0].teamGladiatorInGame() && sortByStrongestTeam[1].teamGladiatorInGame());
 
-
-
+				// On met à jour les deux équipes
+				foreach (Team b_team in sortByStrongestTeam) {
+					// L'équipe qui n'a plus de gladiateurs est mise à false
+					// L'autre équipes voit le status de tous ses gladiateurs remis à true
+					bool noMoreGladiator = b_team.teamGladiatorInGame();
+					if (noMoreGladiator == false) {
+						b_team.InGame = false;
+					} else {
+						foreach (Gladiator b_glad in b_team.Gladiator) {
+							b_glad.InGame = true;
+						}
+					}
+				}
 			}
 		}
 

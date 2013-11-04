@@ -66,7 +66,7 @@ namespace Gladiator
 		}
 
 
-		private bool _inGame = false;
+		private bool _inGame = true;
 		public bool InGame {
 			get { return this._inGame; }
 			set { this._inGame = value; }
