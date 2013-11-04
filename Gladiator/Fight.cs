@@ -55,7 +55,7 @@ namespace Gladiator
 
 			int countFight = 0;
 			// Boucle sur le nombre d'équipes
-			while(countFight < countTeam/4) {
+			while(countFight < countTeam/2) {
 				countFight++;
 
 				List<Team> sortByStrongestTeam = (from b_team in Team
@@ -63,11 +63,11 @@ namespace Gladiator
 			                                      where b_team.InGame == false
 			                                      select b_team).Take(2).ToList();
 
-				List<Gladiator> gladiators = new List<Gladiator>();
+				//List<Gladiator> gladiators = new List<Gladiator>();
 
 				// Sélection des deux equipes les plus fortes
-				foreach (Team b_rowT in sortByStrongestTeam) {
-					b_rowT.InGame = true;
+				/*foreach (Team b_rowT in sortByStrongestTeam) {
+					//b_rowT.InGame = true;
 
 					// Sélection des deux joueurs avec la plus grande priorité
 					Gladiator gladiator = b_rowT.gladiatorByPriority ();
@@ -83,11 +83,20 @@ namespace Gladiator
 						Alert.showAlert ( b_rowG.GladiatorName);
 					}*/
 
+					// If we have two gladiators we launch the duel
+				//}
+				do {
+					List<Gladiator> gladiators = this.getTwoOpponents (sortByStrongestTeam);
+					if (gladiators.Count == 2) {
+						Duel duel = new Duel (gladiators [0], gladiators [1]);
+						Gladiator glad = duel.InTheArena ();
 
-				}
-				Duel duel = new Duel (gladiators[0], gladiators[1]);
-				Gladiator glad = duel.InTheArena ();
-				Alert.showGladiator (glad);
+						Alert.showGladiator (glad);
+					}
+				} while(sortByStrongestTeam[0].teamGladiatorInGame() || sortByStrongestTeam[1].teamGladiatorInGame());
+
+
+
 			}
 		}
 
@@ -95,10 +104,37 @@ namespace Gladiator
 		// DEBUG ?
 		public void teamListShow()
 		{
-			foreach (Team b_row in Team) {
-				Console.WriteLine( "-" + b_row.TeamName + b_row.Owner.Pseudo);
+			foreach (Team b_team in Team) {
+				foreach(Gladiator b_glad in b_team.Gladiator) {
+					Console.WriteLine( "-" + b_glad.GladiatorName);
+				}
+
 			}
 		}
+
+		/**
+		 * 
+		 */ 
+		public List<Gladiator> getTwoOpponents(List<Team> _twoTeam)
+		{
+			List<Gladiator> gladiators = new List<Gladiator>();
+			// Sélection des deux equipes les plus fortes
+			foreach (Team b_rowT in _twoTeam) {
+
+				// Sélection des deux joueurs avec la plus grande priorité
+				Gladiator gladiator = b_rowT.gladiatorByPriority ();
+
+				if (gladiator == null) {
+					break;
+				}
+
+				gladiators.Add (gladiator);
+
+			}
+
+			return gladiators;
+		}
+
 	}
 }
 

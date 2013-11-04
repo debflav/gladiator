@@ -130,6 +130,7 @@ namespace Gladiator
 			// Insertion de l'équipe dans la collection
 			try {
 				this.Gladiator.Add (p_gladiator);
+				p_gladiator.GladiatorTeam = this;
 			} catch(Exception) {
 				throw new Exception ("Something wrong append.");
 			}
@@ -204,6 +205,23 @@ namespace Gladiator
 			}
 
 			return glad;
+		}
+
+
+		/**
+		 * 
+		 * 
+		 */
+		public bool teamGladiatorInGame()
+		{
+			foreach (Gladiator b_glad in Gladiator) {
+				if (b_glad.InGame) {
+
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 	}

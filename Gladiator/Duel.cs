@@ -40,6 +40,8 @@ namespace Gladiator
 
 			Alert.showAlert ("DEBUT DU DUEL");
 			Alert.showAlert ("-------------");
+			Alert.showAlertWith ("Gladiateur 1: equipe", (this.Gladiator1.GladiatorTeam.TeamName).ToString());
+			Alert.showAlertWith ("Gladiateur 2: equipe", (this.Gladiator2.GladiatorTeam.TeamName).ToString());
 			Alert.showAlertWith ("Gladiateur 1", (this.Gladiator1.GladiatorName).ToString());
 			Alert.showAlertWith ("Gladiateur 2", (this.Gladiator2.GladiatorName).ToString());
 
@@ -105,17 +107,22 @@ namespace Gladiator
 
 			}
 
-			//vérifier gagnant
+			// Vérifier gagnant
 			// Retourne null si les deux gladiateur se tue.
 			if (!this.Gladiator1.InGame && !this.Gladiator2.InGame) {
+				this.Gladiator1.GladiatorDefeatNumber += 1;
+				this.Gladiator2.GladiatorDefeatNumber += 1;
 
 				return null;
 
 			} else if (this.Gladiator2.InGame) {
+				this.Gladiator2.GladiatorWinNumber += 1;
+				this.Gladiator1.GladiatorDefeatNumber += 1;
 
 				return this.Gladiator2;
-
 			} else {
+				this.Gladiator1.GladiatorWinNumber += 1;
+				this.Gladiator2.GladiatorDefeatNumber += 1;
 
 				return this.Gladiator1;
 			}

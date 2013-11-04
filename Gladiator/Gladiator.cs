@@ -81,6 +81,16 @@ namespace Gladiator
 
 
 		/**
+		 * Collection de Team
+		 */
+		private Team _gladiatorTeam; 
+		public Team GladiatorTeam {
+			get { return this._gladiatorTeam; }
+			set { this._gladiatorTeam = value; }
+		}
+
+
+		/**
 		 * Constructeur
 		 */
 		public Gladiator (string name)

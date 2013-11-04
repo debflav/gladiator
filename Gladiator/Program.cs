@@ -57,12 +57,10 @@ namespace Gladiator
 			gladiator9.addEquipment (new Dagger());
 			gladiator9.addEquipment (new SmallShield());
 			gladiator9.addEquipment (new Helmet());
-			gladiator9.InGame = true;
 
 			Gladiator gladiator10 = new Gladiator ("hulk");
 			gladiator10.addEquipment (new Sword ());
 			gladiator10.addEquipment (new Helmet ());
-			gladiator10.InGame = true;
 
 			/* Initialisation equipes */
 			Team team1 = new Team ("Les cougars", "On est des dingues !!!", player1);
@@ -161,23 +159,23 @@ namespace Gladiator
 			team17.addGladiator (gladiator6);
 
 			/*	Ajouter une team au combat */
-//			Fight fight = new Fight ();
-//			fight.addTeamToFight(team1);
-//			fight.addTeamToFight(team5);
+			Fight fight = new Fight ();
+			fight.addTeamToFight(team1);
+			fight.addTeamToFight(team5);
 //			fight.addTeamToFight(team10);
 //			fight.addTeamToFight(team17);
-//			fight.initializeFight ();
-			//fight.teamListShow ();
+			fight.initializeFight ();
+			fight.teamListShow ();
 
 			// test Duel
-			Duel d = new Duel (gladiator9, gladiator10);
+			/*Duel d = new Duel (gladiator9, gladiator10);
 			Gladiator winner = d.InTheArena ();
 
 			if (winner == null) {
 				Alert.showAlert ("les deux gladiateurs on perdu !...");
 			} else {
 				Alert.showGladiator (winner);
-			}
+			}*/
 
 
 
