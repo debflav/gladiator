@@ -212,19 +212,19 @@ namespace Gladiator
 
 
 		/**
-		 * 
-		 * 
+		 * Retourne true si l'équipe a encore des gladiators en lice,
+		 * sinon retourne false.
 		 */
 		public bool teamGladiatorInGame()
 		{
 			foreach (Gladiator b_glad in Gladiator) {
 				if (b_glad.InGame) {
-					Alert.showAlert ("D'autres adversaire, le combat peut continuer");
+					//Alert.showAlert ("D'autres adversaire, le combat peut continuer");
 
 					return true;
 				}
 			}
-			Alert.showAlert ("Plus d'adversaire, le combat s'arrête. Team gagnante: " + this.TeamName);
+			//Alert.showAlert ("Plus d'adversaire, le combat s'arrête.");
 
 			return false;
 		}

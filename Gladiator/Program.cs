@@ -51,7 +51,7 @@ namespace Gladiator
 
 			Gladiator gladiator8 = new Gladiator ("gentil");
 			gladiator8.addEquipment (new Sword ());
-			gladiator8.addEquipment (new Helmet ());
+			gladiator8.addEquipment (new Net ());
 
 			Gladiator gladiator9 = new Gladiator ("Captaine");
 			gladiator9.addEquipment (new Dagger());
@@ -173,7 +173,6 @@ namespace Gladiator
 			fight.addTeamToFight(team10);
 			fight.addTeamToFight(team17);
 			fight.initializeFight ();
-//			fight.teamListShow ();
 
 			// test Duel
 			/*Duel d = new Duel (gladiator9, gladiator10);

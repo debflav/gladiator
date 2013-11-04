@@ -24,9 +24,9 @@ namespace Gladiator
 		}
 
 		/**
-		 * Ajouter une equipe au tournoi
+		 * Ajouter une equipe au tournoi.
 		 * 
-		 * Un joueur peut ajouter une seule équipe
+		 * Un joueur peut ajouter une seule équipe.
 		 */
 		public void addTeamToFight(Team p_team)
 		{
@@ -41,21 +41,22 @@ namespace Gladiator
 		}
 
 		/**
-		 *  Trouve les équipes qui vont combattre suivant leur pourcentage
-		 *  de victoire (les plus fortes contre les plus fortes).
+		 * Trouve les équipes qui vont combattre suivant leur pourcentage de victoire.
+		 * Trouve les gladiateurs des équipes qui vont se combattre.
+		 * Retourne l'équipe gagnante
 		 */
 		public void initializeFight()
 		{
 			int countTeam = Team.Count;
 
+			// Le combat doit etre un nombre impair
 			if (countTeam % 2 == 1) {
-				Alert.showAlert ("Le combat ne peut pas commencer avec un nombre d'équipe impair.");
+				Alert.showAlert ("Le combat ne peut pas commencer. Il manque une équipe.");
 			}
 
-
-			int countFight = 0;
+			int countFight = 1;
 			// Boucle sur le nombre d'équipes
-			while(countFight < countTeam/2) {
+			while(countFight < countTeam) {
 				countFight++;
 
 				List<Team> sortByStrongestTeam = (from b_team in Team
@@ -77,13 +78,12 @@ namespace Gladiator
 					}
 				} while(sortByStrongestTeam[0].teamGladiatorInGame() && sortByStrongestTeam[1].teamGladiatorInGame());
 
-				// On met à jour les deux équipes
+				// L'équipe qui n'a plus de gladiateurs est retiré du tournoi (à voir si InGame est utile pour la team)
+				// L'autre équipes voit le status de tous ses gladiateurs remis à true
 				foreach (Team b_team in sortByStrongestTeam) {
-					// L'équipe qui n'a plus de gladiateurs est mise à false
-					// L'autre équipes voit le status de tous ses gladiateurs remis à true
 					bool noMoreGladiator = b_team.teamGladiatorInGame();
 					if (noMoreGladiator == false) {
-						b_team.InGame = false;
+						this.Team.Remove (b_team);
 					} else {
 						foreach (Gladiator b_glad in b_team.Gladiator) {
 							b_glad.InGame = true;
@@ -91,22 +91,15 @@ namespace Gladiator
 					}
 				}
 			}
-		}
-
-
-		// DEBUG ?
-		public void teamListShow()
-		{
-			foreach (Team b_team in Team) {
-				foreach(Gladiator b_glad in b_team.Gladiator) {
-					Console.WriteLine( "-" + b_glad.GladiatorName);
-				}
-
+			// Method winner !!! (ou pas)
+			foreach(Team b_team in Team) {
+				Alert.showAlert ("La team \"" + b_team.TeamName + "\" a gagnée. Hip hip hip !!!");
 			}
 		}
+		
 
 		/**
-		 * 
+		 * Retourne une liste de gladiateurs comportant les deux adversaires.
 		 */ 
 		public List<Gladiator> getTwoOpponents(List<Team> _twoTeam)
 		{

@@ -28,7 +28,7 @@ namespace Gladiator
 		public void ifUseNet(Equipment p_equipement, Gladiator p_gladiator){
 
 			if (p_equipement != null && p_equipement is Equipments.Attack.Net) {
-				Alert.showAlert("///// fillet sur " + p_gladiator.GladiatorName);
+				Alert.showAlert("///// filet sur " + p_gladiator.GladiatorName);
 				p_gladiator.downDamage ();
 			}
 
@@ -58,7 +58,7 @@ namespace Gladiator
 
 				if (gladiator1Equipment == null && gladiator2Equipment == null) {
 
-					Alert.showAlert ("Personne n'est mort, on recomence une nouvelle joute !");
+					Alert.showAlert ("Personne n'est mort, on recommence une nouvelle joute !");
 					this.Gladiator1.rearmament ();
 					this.Gladiator2.rearmament ();
 
@@ -118,13 +118,11 @@ namespace Gladiator
 			} else if (this.Gladiator2.InGame) {
 				this.Gladiator2.GladiatorWinNumber += 1;
 				this.Gladiator1.GladiatorDefeatNumber += 1;
-				//this.Gladiator2.InGame = false;
 
 				return this.Gladiator2;
 			} else {
 				this.Gladiator1.GladiatorWinNumber += 1;
 				this.Gladiator2.GladiatorDefeatNumber += 1;
-				//this.Gladiator1.InGame = false;
 
 				return this.Gladiator1;
 			}
