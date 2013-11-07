@@ -76,14 +76,14 @@ namespace Gladiator
 
 				} else if (gladiator1Equipment.Priority == gladiator2Equipment.Priority) {
 
-					gladiator2Equipment.Use = true;
-					gladiator1Equipment.Use = true;
 
 					Alert.showAlert ("Equipement sont égaux les deux gladiateur vont attaquer");
-
+					gladiator1Equipment.Use = true;
 					Alert.showAlert (this.Gladiator1.GladiatorName + " attaque avec " + gladiator1Equipment.Name); 
 					this.Gladiator2.defend (gladiator1Equipment);
 
+
+					gladiator2Equipment.Use = true;
 					Alert.showAlert (this.Gladiator2.GladiatorName + " attaque avec " + gladiator2Equipment.Name); 
 					this.Gladiator1.defend (gladiator2Equipment);
 

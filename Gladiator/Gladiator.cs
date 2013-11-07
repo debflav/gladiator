@@ -277,12 +277,11 @@ namespace Gladiator
 
 
 								} else {
-								Alert.showAlert (this.GladiatorName + " a bloqué l'attaque");
-								break;
+									Alert.showAlert (this.GladiatorName + " a bloqué l'attaque");
+									break;
 								}
 
 							}
-
 						}
 						// quand le gladiateur est toucher on arrete la boucle
 						i = (p_equipment.LuckyTouch / 10);
@@ -302,10 +301,6 @@ namespace Gladiator
 			}
 
 		}
-
-
-
-
 
 	}
 }
