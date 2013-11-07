@@ -23,11 +23,11 @@ namespace Gladiator
 
 			//Création des joueurs */
 			Player player1 = new Player ("Michel", "Jean", "JeanMich");
-			Player player2 = new Player ("Toto", "Toto", "Toto");
-			Player player3 = new Player ("Tata", "Tata", "Tata");
-			Player player4 = new Player ("Tutu", "Tutu", "Tutu");
-			Player player5 = new Player ("Tata", "Tata", "Tata");
-			Player player6 = new Player ("Tutu", "Tutu", "Tutu");
+			Player player2 = new Player ("Philipe", "Philipe", "Philipe");
+			Player player3 = new Player ("Maltilde", "Maltilde", "Maltilde");
+			Player player4 = new Player ("Herber", "Herber", "Herber");
+			Player player5 = new Player ("Marc", "Marc", "Marc");
+			Player player6 = new Player ("Julie", "Julie", "Julie");
 
 			//-------------------------
 			// Team 1 //////////
@@ -61,14 +61,14 @@ namespace Gladiator
 			// Team 2 : Gladiateur ////////
 			Gladiator gladiator4 = new Gladiator ("Toutdou");
 			gladiator4.addEquipment (new Dagger ());
-			gladiator4.addEquipment (new Net ());
+			gladiator4.addEquipment (new SmallShield ());
 
 			Gladiator gladiator5 = new Gladiator ("Bisou");
 			gladiator5.addEquipment (new Spear());
 			gladiator5.addEquipment (new Helmet());
 
 			Gladiator gladiator6 = new Gladiator ("Calin");
-			gladiator6.addEquipment (new Trident ());
+			gladiator6.addEquipment (new Dagger ());
 			gladiator6.addEquipment (new Net ());
 
 			team2.addGladiator (gladiator4);
@@ -91,7 +91,7 @@ namespace Gladiator
 			gladiator8.addEquipment (new Net ());
 
 			Gladiator gladiator9 = new Gladiator ("Ombre");
-			gladiator9.addEquipment (new Dagger());
+			gladiator9.addEquipment (new Trident());
 			gladiator9.addEquipment (new Helmet());
 
 			team3.addGladiator (gladiator7);

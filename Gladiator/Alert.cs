@@ -22,7 +22,7 @@ namespace Gladiator
 
 		public static void showRedAlert (string message){
 			Console.ForegroundColor = ConsoleColor.Red;
-			Console.WriteLine(message);
+			Console.WriteLine(message + "\n");
 			Console.ResetColor();
 		}
 		public static void showyellowAlert (string message){

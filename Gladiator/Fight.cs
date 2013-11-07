@@ -123,8 +123,12 @@ namespace Gladiator
 				if (noMoreGladiator == false) {
 					b_rowTeam.TeamDefeatNumber++;
 					this.Team.Remove (b_rowTeam);
+					Alert.showRedAlert(b_rowTeam.TeamName + " à perdu le match !");
+
+
 				} else {
 					b_rowTeam.WinNumber++;
+					Alert.showyellowAlert(b_rowTeam.TeamName + " à gagné le match !");
 					foreach (Gladiator b_glad in b_rowTeam.Gladiator) {
 						b_glad.InGame = true;
 					}
