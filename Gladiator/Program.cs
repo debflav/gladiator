@@ -12,9 +12,6 @@ namespace Gladiator
 		public static void Main (string[] args)
 		{
 
-			/* Menu */
-			//Menu menu = new Menu ();
-
 			/* Création des joueurs */
 			Player player1 = new Player ("Michel", "Jean", "JeanMich");
 			Player player2 = new Player ("Toto", "Toto", "Toto");
@@ -125,7 +122,7 @@ namespace Gladiator
 			// Player 1
 			team1.addGladiator (gladiator1);
 			team1.addGladiator (gladiator2);
-			///team1.addGladiator (gladiator3);
+			team1.addGladiator (gladiator3);
 			/*team2.addGladiator (gladiator4);
 			team2.addGladiator (gladiator5);
 			team2.addGladiator (gladiator6);
@@ -134,7 +131,7 @@ namespace Gladiator
 			team3.addGladiator (gladiator9);*/
 
 			// Player 2
-			///team5.addGladiator (gladiator4);
+			team5.addGladiator (gladiator4);
 			team5.addGladiator (gladiator5);
 			team5.addGladiator (gladiator6);
 			/*team6.addGladiator (gladiator3);
@@ -170,8 +167,8 @@ namespace Gladiator
 			Fight fight = new Fight ();
 			fight.addTeamToFight(team1);
 			fight.addTeamToFight(team5);
-			//fight.addTeamToFight(team10);
-			//fight.addTeamToFight(team17);
+			fight.addTeamToFight(team10);
+			fight.addTeamToFight(team17);
 			fight.initializeFight ();
 
 			// test Duel

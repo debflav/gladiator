@@ -31,43 +31,45 @@ namespace Gladiator
 		public void addTeamToFight(Team p_team)
 		{
 			// Regarde si le joueur a déjà une équipe dans le tournoi
-			foreach (Team b_row in Team) {
-				if( b_row.Owner.Pseudo == p_team.Owner.Pseudo) {
+			foreach (Team b_rowTeam in Team) {
+				if( b_rowTeam.Owner.Pseudo == p_team.Owner.Pseudo) {
 					Alert.showAlert ("Vous avez déjà une équipe dans le tournoi.");
 					return;
 				}
 			}
+
 			Team.Add(p_team);
 		}
 
 		/**
 		 * Trouve les équipes qui vont combattre suivant leur pourcentage de victoire.
 		 * Trouve les gladiateurs des équipes qui vont se combattre.
-		 * Retourne l'équipe gagnante
+		 * Retourne l'équipe gagnante.
 		 */
 		public void initializeFight()
 		{
 			int countTeam = Team.Count;
 
-			// Le combat doit etre un nombre impair
+			// Le combat doit être un nombre impair.
 			if (countTeam % 2 == 1) {
 				Alert.showAlert ("Le combat ne peut pas commencer. Il manque une équipe.");
+				return;
 			}
 
 			int countFight = 1;
-			// Boucle sur le nombre d'équipes
 			while(countFight < countTeam) {
 				countFight++;
 
+				// Donne les deux équipes toujours en lice dont le pourçentage de victoire est le plus élevé.
 				List<Team> sortByStrongestTeam = (from b_team in Team
 			                                      orderby b_team.getPercentVictory() descending
-			                                      where b_team.InGame == true
 			                                      select b_team).Take(2).ToList();
 
+				// Tant que les équipes ont des gladiateurs disponible au combat.
 				do {
 					List<Gladiator> gladiators = this.getTwoOpponents (sortByStrongestTeam);
 
-					if (gladiators.Count == 2) {
+
 						Duel duel = new Duel (gladiators [0], gladiators [1]);
 						Gladiator glad = duel.InTheArena ();
 						if(glad == null) {
@@ -75,50 +77,59 @@ namespace Gladiator
 						} else {
 							Alert.showGladiator (glad);
 						}
-					}
 				} while(sortByStrongestTeam[0].teamGladiatorInGame() && sortByStrongestTeam[1].teamGladiatorInGame());
 
-				// L'équipe qui n'a plus de gladiateurs est retiré du tournoi (à voir si InGame est utile pour la team)
-				// L'autre équipes voit le status de tous ses gladiateurs remis à true
-				foreach (Team b_team in sortByStrongestTeam) {
-					bool noMoreGladiator = b_team.teamGladiatorInGame();
-					if (noMoreGladiator == false) {
-						this.Team.Remove (b_team);
-					} else {
-						foreach (Gladiator b_glad in b_team.Gladiator) {
-							b_glad.InGame = true;
-						}
-					}
-				}
+				this.roundEndBetweenTwoTeam (sortByStrongestTeam);
 			}
-			// Method winner !!! (ou pas)
+
 			foreach(Team b_team in Team) {
-				Alert.showAlert ("La team \"" + b_team.TeamName + "\" a gagnée. Hip hip hip !!!");
+				Alert.showAlert ("La team \"" + b_team.TeamName + "\" a gagnée le tournoi. Hip hip hip !!!");
+				Alert.showAlert ("Matchs gagnés: " + b_team.WinNumber + ". Matchs perdus: " + b_team.TeamDefeatNumber +"." + " Match jouées: " + b_team.MatchPlayed);
 			}
 		}
 		
 
 		/**
-		 * Retourne une liste de gladiateurs comportant les deux adversaires.
+		 * Retourne une liste de gladiateurs comportant les deux adversaires qui vont s'affronter.
 		 */ 
 		public List<Gladiator> getTwoOpponents(List<Team> _twoTeam)
 		{
 			List<Gladiator> gladiators = new List<Gladiator>();
-			// Sélection des deux equipes les plus fortes
-			foreach (Team b_rowT in _twoTeam) {
 
-				// Sélection des deux joueurs avec la plus grande priorité
-				Gladiator gladiator = b_rowT.gladiatorByPriority ();
+			foreach (Team b_rowTeam in _twoTeam) {
+				Gladiator oneGladiator = b_rowTeam.gladiatorByPriority ();
 
-				if (gladiator == null) {
+				if (oneGladiator == null) {
 					break;
 				}
 
-				gladiators.Add (gladiator);
-
+				gladiators.Add (oneGladiator);
 			}
 
 			return gladiators;
+		}
+
+		 
+		/**
+		 * - L'équipe qui n'a plus de gladiateurs est retiré du tournoi. Son nombre de défaite est incrémenté de un.
+		 * - L'équipe gagnante voit le status de tous ses gladiateurs remis à true pour le prochain combat.
+		 * Son nombre de victoire est incrémenté de un.
+		 */
+		public void roundEndBetweenTwoTeam(List<Team> sortByStrongestTeam)
+		{
+			foreach (Team b_rowTeam in sortByStrongestTeam) {
+				bool noMoreGladiator = b_rowTeam.teamGladiatorInGame();			
+				b_rowTeam.MatchPlayed++;
+				if (noMoreGladiator == false) {
+					b_rowTeam.TeamDefeatNumber++;
+					this.Team.Remove (b_rowTeam);
+				} else {
+					b_rowTeam.WinNumber++;
+					foreach (Gladiator b_glad in b_rowTeam.Gladiator) {
+						b_glad.InGame = true;
+					}
+				}
+			}
 		}
 
 	}

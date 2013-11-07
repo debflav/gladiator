@@ -62,6 +62,7 @@ namespace Gladiator
 			set { this._teamDefeatNumber = value; }
 		}
 
+
 		/**
 		 * Nombre de match joué Int
 		 */
@@ -71,15 +72,6 @@ namespace Gladiator
 			set { this._matchPlayed = value; }
 		}
 
-
-		/**
-		 * Partie en cours Bool
-		 */
-		private bool _inGame = true;
-		public bool InGame {
-			get { return this._inGame; }
-			set { this._inGame = value; }
-		}
 
 		/**
 		 * Collection Gladiateur
@@ -183,7 +175,7 @@ namespace Gladiator
 
 
 		/**
-		 * Obtenir le pourcentage de victoire
+		 * Retourne le pourcentage de victoire de l'équipe.
 		 */
 		public double getPercentVictory()
 		{
@@ -192,39 +184,39 @@ namespace Gladiator
 
 
 		/**
-		 * Retourne le premier gladiateur de l'équipe (par priorité)
+		 * Retourne le premier gladiateur de l'équipe (par priorité).
+		 * Si l'équipe n'a plus de gladiateur disponible return un gladiateur null.
 		 */
 		public Gladiator gladiatorByPriority()
 		{
 			List<Gladiator> sortByGladiatorPriority = new List<Gladiator>();
+			Gladiator oneGladiator = null;
 
 			sortByGladiatorPriority = (from b_glad in Gladiator
 			                           orderby b_glad.Priority descending
 			                           where b_glad.InGame == true
 			                           select b_glad).Take(1).ToList();
-			Gladiator glad = null;
-			foreach(Gladiator b_row in sortByGladiatorPriority) {
-				glad = b_row;
+
+			foreach(Gladiator b_rowGlad in sortByGladiatorPriority) {
+				oneGladiator = b_rowGlad;
 			}
 
-			return glad;
+			return oneGladiator;
 		}
 
 
 		/**
-		 * Retourne true si l'équipe a encore des gladiators en lice,
-		 * sinon retourne false.
+		 * Retourne vrai si l'équipe possède encore des gladiateurs
+		 * en lice, sinon retourne faux.
 		 */
 		public bool teamGladiatorInGame()
 		{
 			foreach (Gladiator b_glad in Gladiator) {
 				if (b_glad.InGame) {
-					//Alert.showAlert ("D'autres adversaire, le combat peut continuer");
 
 					return true;
 				}
 			}
-			//Alert.showAlert ("Plus d'adversaire, le combat s'arrête.");
 
 			return false;
 		}
