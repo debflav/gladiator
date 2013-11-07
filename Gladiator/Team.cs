@@ -199,6 +199,7 @@ namespace Gladiator
 
 			foreach(Gladiator b_rowGlad in sortByGladiatorPriority) {
 				oneGladiator = b_rowGlad;
+				Alert.showAlert (oneGladiator.GladiatorName + " " + oneGladiator.Priority);
 			}
 
 			return oneGladiator;

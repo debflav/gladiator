@@ -39,14 +39,17 @@ namespace Gladiator
 			Gladiator gladiator1 = new Gladiator ("Molki");
 			gladiator1.addEquipment (new Dagger());
 			gladiator1.addEquipment (new LargeShield());
+			gladiator1.Priority = 1;
 
 			Gladiator gladiator2 = new Gladiator ("Molka");
 			gladiator2.addEquipment (new Net ());
 			gladiator2.addEquipment (new Helmet ());
+			gladiator1.Priority = 2;
 
 			Gladiator gladiator3 = new Gladiator ("Molko");
 			gladiator3.addEquipment (new Sword());
 			gladiator3.addEquipment (new SmallShield());
+			gladiator1.Priority = 3;
 
 			team1.addGladiator (gladiator1);
 			team1.addGladiator (gladiator2);
@@ -62,14 +65,17 @@ namespace Gladiator
 			Gladiator gladiator4 = new Gladiator ("Toutdou");
 			gladiator4.addEquipment (new Dagger ());
 			gladiator4.addEquipment (new SmallShield ());
+			gladiator4.Priority = 3;
 
 			Gladiator gladiator5 = new Gladiator ("Bisou");
 			gladiator5.addEquipment (new Spear());
 			gladiator5.addEquipment (new Helmet());
+			gladiator5.Priority = 2;
 
 			Gladiator gladiator6 = new Gladiator ("Calin");
 			gladiator6.addEquipment (new Dagger ());
 			gladiator6.addEquipment (new Net ());
+			gladiator6.Priority = 1;
 
 			team2.addGladiator (gladiator4);
 			team2.addGladiator (gladiator5);
@@ -85,14 +91,17 @@ namespace Gladiator
 			Gladiator gladiator7 = new Gladiator ("Darkness");
 			gladiator7.addEquipment (new Dagger());
 			gladiator7.addEquipment (new LargeShield());
+			gladiator7.Priority = 2;
 
 			Gladiator gladiator8 = new Gladiator ("Noir");
 			gladiator8.addEquipment (new Sword ());
 			gladiator8.addEquipment (new Net ());
+			gladiator8.Priority = 3;
 
 			Gladiator gladiator9 = new Gladiator ("Ombre");
 			gladiator9.addEquipment (new Trident());
 			gladiator9.addEquipment (new Helmet());
+			gladiator9.Priority = 1;
 
 			team3.addGladiator (gladiator7);
 			team3.addGladiator (gladiator8);
@@ -108,14 +117,17 @@ namespace Gladiator
 			Gladiator gladiator10 = new Gladiator ("Grincheu");
 			gladiator10.addEquipment (new Sword ());
 			gladiator10.addEquipment (new Helmet ());
+			gladiator10.Priority = 3;
 
 			Gladiator gladiator11 = new Gladiator ("Dormeur");
 			gladiator11.addEquipment (new Dagger());
 			gladiator11.addEquipment (new LargeShield());
+			gladiator11.Priority = 1;
 
 			Gladiator gladiator12 = new Gladiator ("Timide");
 			gladiator12.addEquipment (new Sword ());
 			gladiator12.addEquipment (new Net ());
+			gladiator12.Priority = 2;
 
 			team4.addGladiator (gladiator10);
 			team4.addGladiator (gladiator11);
@@ -131,14 +143,17 @@ namespace Gladiator
 			Gladiator gladiator13 = new Gladiator ("Dauphin");
 			gladiator13.addEquipment (new Sword ());
 			gladiator13.addEquipment (new Net ());
+			gladiator13.Priority = 1;
 
 			Gladiator gladiator14 = new Gladiator ("Cheval");
 			gladiator14.addEquipment (new Dagger ());
 			gladiator14.addEquipment (new Helmet ());
+			gladiator14.Priority = 2;
 
 			Gladiator gladiator15 = new Gladiator ("Chaton");
 			gladiator15.addEquipment (new Sword ());
 			gladiator15.addEquipment (new Net ());
+			gladiator15.Priority = 3;
 
 			team5.addGladiator (gladiator13);
 			team5.addGladiator (gladiator14);
@@ -154,14 +169,17 @@ namespace Gladiator
 			Gladiator gladiator16 = new Gladiator ("Hulk");
 			gladiator16.addEquipment (new Dagger ());
 			gladiator16.addEquipment (new Helmet ());
+			gladiator16.Priority = 3;
 
 			Gladiator gladiator17 = new Gladiator ("Superman");
 			gladiator17.addEquipment (new Trident ());
 			gladiator17.addEquipment (new SmallShield ());
+			gladiator17.Priority = 2;
 
 			Gladiator gladiator18 = new Gladiator ("Batman");
 			gladiator18.addEquipment (new Sword ());
 			gladiator18.addEquipment (new Net ());
+			gladiator18.Priority = 1;
 
 			team6.addGladiator (gladiator16);
 			team6.addGladiator (gladiator17);
