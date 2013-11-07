@@ -12,6 +12,8 @@ namespace Gladiator
 		public static void Main (string[] args)
 		{
 
+			Alert.initConsole ();
+
 			/* Création des joueurs */
 			Player player1 = new Player ("Michel", "Jean", "JeanMich");
 			Player player2 = new Player ("Toto", "Toto", "Toto");

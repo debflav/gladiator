@@ -6,6 +6,9 @@ namespace Gladiator
 	public static class Alert
 	{
 
+		public static void initConsole(){
+			Console.Title = "Gladiator";
+		}
 		public static void showAlert (string message)
 		{
 			Console.WriteLine(message);
@@ -20,6 +23,11 @@ namespace Gladiator
 		public static void showRedAlert (string message){
 			Console.ForegroundColor = ConsoleColor.Red;
 			Console.WriteLine(message);
+			Console.ResetColor();
+		}
+		public static void showyellowAlert (string message){
+			Console.ForegroundColor = ConsoleColor.Yellow;
+			Console.WriteLine(message + "\n");
 			Console.ResetColor();
 		}
 

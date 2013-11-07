@@ -75,7 +75,7 @@ namespace Gladiator
 						if(glad == null) {
 							Alert.showAlert("Les deux adversaires se sont entretués; les idiots =)");
 						} else {
-							Alert.showGladiator (glad);
+							Alert.showyellowAlert("Gagnant du duel : " + glad.GladiatorName);
 						}
 				} while(sortByStrongestTeam[0].teamGladiatorInGame() && sortByStrongestTeam[1].teamGladiatorInGame());
 
