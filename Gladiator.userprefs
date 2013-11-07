@@ -1,52 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Gladiator/Fight.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Gladiator/Duel.cs">
     <Files>
-      <File FileName="Gladiator/Equipments/Interfaces/IAttack.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Equipments/Equipment.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Equipments/Interfaces/IDefend.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Equipments/Attack/Dagger.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Equipments/Defend/LargeShield.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Equipments/Defend/Helmet.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Equipments/Defend/SmallShield.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Equipments/Attack/Net.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Equipments/Attack/Sword.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Equipments/Attack/Spear.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Team.cs" Line="100" Column="25" />
-      <File FileName="Gladiator/Equipments/DefendAndAtack/Trident.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Alert.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Program.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Fight.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Player.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Duel.cs" Line="1" Column="1" />
-      <File FileName="Gladiator/Gladiator.cs" Line="277" Column="6" />
-      <File FileName="Gladiator/Menu.cs" Line="1" Column="1" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Gladiator/Program.cs">
-    <Files>
-      <File FileName="Gladiator/Program.cs" Line="130" Column="33" />
-      <File FileName="Gladiator/Duel.cs" Line="66" Column="1" />
-      <File FileName="Gladiator/Team.cs" Line="133" Column="5" />
-      <File FileName="Gladiator/Gladiator.cs" Line="99" Column="33" />
-      <File FileName="Gladiator/Fight.cs" Line="92" Column="22" />
->>>>>>> c8c15a8a239ab9387f6b09e657c8af032441abf5
+      <File FileName="Gladiator/Duel.cs" Line="68" Column="25" />
+      <File FileName="Gladiator/Fight.cs" Line="100" Column="3" />
+      <File FileName="Gladiator/Program.cs" Line="126" Column="4" />
+      <File FileName="Gladiator/Gladiator.cs" Line="27" Column="3" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Gladiator" expanded="True">
-<<<<<<< HEAD
-            <Node name="Equipments" expanded="True">
-              <Node name="Attack" expanded="True" />
-              <Node name="Defend" expanded="True" />
-              <Node name="DefendAndAtack" expanded="True" />
-              <Node name="Interfaces" expanded="True" />
-            </Node>
-            <Node name="Fight.cs" selected="True" />
-=======
-            <Node name="Program.cs" selected="True" />
->>>>>>> c8c15a8a239ab9387f6b09e657c8af032441abf5
+            <Node name="Equipments" expanded="True" />
+            <Node name="Duel.cs" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -55,6 +21,9 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State />
+      </Pad>
+      <Pad Id="ConnectionManagerPad">
+        <State selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

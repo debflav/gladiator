@@ -183,6 +183,9 @@ namespace Gladiator
 
 		}
 
+
+
+
 		/**
 		 * Renvois une arme au moment de l'attaque
 		 * Avec ordre d'initiative des armes (Filet - Lance - Trident - Épée - Dague

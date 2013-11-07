@@ -65,7 +65,7 @@ namespace Gladiator
 				} else if (gladiator1Equipment == null) {
 
 					Alert.showAlert (this.Gladiator2.GladiatorName + " attaque avec " + gladiator2Equipment.Name); 
-					//gladiator1Equipment.Use = true;
+					gladiator2Equipment.Use = true;
 					this.Gladiator1.defend (gladiator2Equipment);
 
 				} else if (gladiator2Equipment == null) {
@@ -116,11 +116,17 @@ namespace Gladiator
 				return null;
 
 			} else if (this.Gladiator2.InGame) {
+
+				this.Gladiator2.rearmament ();
+
 				this.Gladiator2.GladiatorWinNumber += 1;
 				this.Gladiator1.GladiatorDefeatNumber += 1;
 
 				return this.Gladiator2;
 			} else {
+
+				this.Gladiator1.rearmament ();
+
 				this.Gladiator1.GladiatorWinNumber += 1;
 				this.Gladiator2.GladiatorDefeatNumber += 1;
 
