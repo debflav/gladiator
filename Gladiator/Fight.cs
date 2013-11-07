@@ -79,6 +79,13 @@ namespace Gladiator
 						}
 				} while(sortByStrongestTeam[0].teamGladiatorInGame() && sortByStrongestTeam[1].teamGladiatorInGame());
 
+				// Il peut arrivé que deux équipes perdent sur un match nul. A ce moment on incrémente
+				// countFight car il y a un match equipe contre equipe en moins.
+				if (false == sortByStrongestTeam [0].teamGladiatorInGame () &&
+				    false ==  sortByStrongestTeam [1].teamGladiatorInGame ()) {
+					countFight++;
+				}
+
 				this.roundEndBetweenTwoTeam (sortByStrongestTeam);
 			}
 
