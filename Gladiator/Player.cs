@@ -92,7 +92,7 @@ namespace Gladiator
 		 */
 		public void showTeam()
 		{
-			Console.WriteLine( "La liste complète des équipes est:");
+			Console.WriteLine( "La liste complète des équipes du joueur au pseudo " + this.Pseudo + " est: ");
 			foreach (Team b_row in Team) {
 				Console.WriteLine( "-" + b_row.TeamName);
 			}
