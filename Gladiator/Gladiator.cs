@@ -66,7 +66,7 @@ namespace Gladiator
 		}
 
 
-		private bool _inGame = false;
+		private bool _inGame = true;
 		public bool InGame {
 			get { return this._inGame; }
 			set { this._inGame = value; }
@@ -77,6 +77,16 @@ namespace Gladiator
 		public List<Equipment> Equipments {
 			get { return this._equipments; }
 			set { this._equipments = value; }
+		}
+
+
+		/**
+		 * Collection de Team
+		 */
+		private Team _gladiatorTeam; 
+		public Team GladiatorTeam {
+			get { return this._gladiatorTeam; }
+			set { this._gladiatorTeam = value; }
 		}
 
 

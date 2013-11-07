@@ -51,18 +51,24 @@ namespace Gladiator
 
 			Gladiator gladiator8 = new Gladiator ("gentil");
 			gladiator8.addEquipment (new Sword ());
-			gladiator8.addEquipment (new Helmet ());
+			gladiator8.addEquipment (new Net ());
 
 			Gladiator gladiator9 = new Gladiator ("Captaine");
 			gladiator9.addEquipment (new Dagger());
 			gladiator9.addEquipment (new SmallShield());
 			gladiator9.addEquipment (new Helmet());
-			gladiator9.InGame = true;
 
 			Gladiator gladiator10 = new Gladiator ("hulk");
 			gladiator10.addEquipment (new Sword ());
 			gladiator10.addEquipment (new Helmet ());
-			gladiator10.InGame = true;
+
+			Gladiator gladiator11 = new Gladiator ("spiderman");
+			gladiator10.addEquipment (new Sword ());
+			gladiator10.addEquipment (new Helmet ());
+
+			Gladiator gladiator12 = new Gladiator ("batman");
+			gladiator10.addEquipment (new Sword ());
+			gladiator10.addEquipment (new Net ());
 
 			/* Initialisation equipes */
 			Team team1 = new Team ("Les cougars", "On est des dingues !!!", player1);
@@ -120,64 +126,63 @@ namespace Gladiator
 			team1.addGladiator (gladiator1);
 			team1.addGladiator (gladiator2);
 			team1.addGladiator (gladiator3);
-			team2.addGladiator (gladiator4);
+			/*team2.addGladiator (gladiator4);
 			team2.addGladiator (gladiator5);
 			team2.addGladiator (gladiator6);
 			team3.addGladiator (gladiator7);
 			team3.addGladiator (gladiator8);
-			team3.addGladiator (gladiator9);
+			team3.addGladiator (gladiator9);*/
 
 			// Player 2
-			team5.addGladiator (gladiator10);
-			team5.addGladiator (gladiator1);
-			team5.addGladiator (gladiator2);
-			team6.addGladiator (gladiator3);
+			team5.addGladiator (gladiator4);
+			team5.addGladiator (gladiator5);
+			team5.addGladiator (gladiator6);
+			/*team6.addGladiator (gladiator3);
 			team6.addGladiator (gladiator4);
 			team6.addGladiator (gladiator5);
 			team7.addGladiator (gladiator6);
 			team7.addGladiator (gladiator7);
-			team7.addGladiator (gladiator8);
+			team7.addGladiator (gladiator8);*/
 
 			// Player 3
+			team10.addGladiator (gladiator7);
+			team10.addGladiator (gladiator8);
 			team10.addGladiator (gladiator9);
-			team10.addGladiator (gladiator10);
-			team10.addGladiator (gladiator1);
-			team11.addGladiator (gladiator2);
+			/*team11.addGladiator (gladiator2);
 			team11.addGladiator (gladiator3);
 			team11.addGladiator (gladiator4);
 			team12.addGladiator (gladiator5);
 			team12.addGladiator (gladiator6);
-			team12.addGladiator (gladiator7);
+			team12.addGladiator (gladiator7);*/
 
 			// Player 4
-			team15.addGladiator (gladiator8);
+			/*team15.addGladiator (gladiator8);
 			team15.addGladiator (gladiator9);
 			team15.addGladiator (gladiator10);
 			team16.addGladiator (gladiator1);
 			team16.addGladiator (gladiator2);
-			team16.addGladiator (gladiator3);
-			team17.addGladiator (gladiator4);
-			team17.addGladiator (gladiator5);
-			team17.addGladiator (gladiator6);
+			team16.addGladiator (gladiator3);*/
+			team17.addGladiator (gladiator10);
+			team17.addGladiator (gladiator11);
+			team17.addGladiator (gladiator12);
 
 			/*	Ajouter une team au combat */
-//			Fight fight = new Fight ();
-//			fight.addTeamToFight(team1);
-//			fight.addTeamToFight(team5);
-//			fight.addTeamToFight(team10);
-//			fight.addTeamToFight(team17);
-//			fight.initializeFight ();
-			//fight.teamListShow ();
+			Fight fight = new Fight ();
+			fight.addTeamToFight(team1);
+			fight.addTeamToFight(team5);
+			fight.addTeamToFight(team10);
+			fight.addTeamToFight(team17);
+			fight.initializeFight ();
 
 			// test Duel
-			Duel d = new Duel (gladiator9, gladiator10);
+			/*Duel d = new Duel (gladiator9, gladiator10);
 			Gladiator winner = d.InTheArena ();
 
 			if (winner == null) {
 				Alert.showAlert ("les deux gladiateurs on perdu !...");
 			} else {
 				Alert.showGladiator (winner);
-			}
+			}*/
 
 
 

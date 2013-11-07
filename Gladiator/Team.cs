@@ -75,7 +75,7 @@ namespace Gladiator
 		/**
 		 * Partie en cours Bool
 		 */
-		private bool _inGame;
+		private bool _inGame = true;
 		public bool InGame {
 			get { return this._inGame; }
 			set { this._inGame = value; }
@@ -113,6 +113,10 @@ namespace Gladiator
 		 */
 		public bool addGladiator(Gladiator p_gladiator)
 		{
+
+			if(p_gladiator.GladiatorTeam != null) {
+				throw new Exception ("Gladiateur : " + p_gladiator.GladiatorName + " déjà dans une team");
+			}
 			// Regarde le nombre de gladiateurs actuels
 			int countGladiators = Gladiator.Count;
 
@@ -130,6 +134,7 @@ namespace Gladiator
 			// Insertion de l'équipe dans la collection
 			try {
 				this.Gladiator.Add (p_gladiator);
+				p_gladiator.GladiatorTeam = this;
 			} catch(Exception) {
 				throw new Exception ("Something wrong append.");
 			}
@@ -195,15 +200,33 @@ namespace Gladiator
 
 			sortByGladiatorPriority = (from b_glad in Gladiator
 			                           orderby b_glad.Priority descending
-			                           where b_glad.InGame == false
+			                           where b_glad.InGame == true
 			                           select b_glad).Take(1).ToList();
 			Gladiator glad = null;
 			foreach(Gladiator b_row in sortByGladiatorPriority) {
-				b_row.InGame = true;
 				glad = b_row;
 			}
 
 			return glad;
+		}
+
+
+		/**
+		 * Retourne true si l'équipe a encore des gladiators en lice,
+		 * sinon retourne false.
+		 */
+		public bool teamGladiatorInGame()
+		{
+			foreach (Gladiator b_glad in Gladiator) {
+				if (b_glad.InGame) {
+					//Alert.showAlert ("D'autres adversaire, le combat peut continuer");
+
+					return true;
+				}
+			}
+			//Alert.showAlert ("Plus d'adversaire, le combat s'arrête.");
+
+			return false;
 		}
 
 	}
