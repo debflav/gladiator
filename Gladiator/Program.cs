@@ -173,7 +173,7 @@ namespace Gladiator
 
 			Gladiator gladiator17 = new Gladiator ("Superman");
 			gladiator17.addEquipment (new Trident ());
-			gladiator17.addEquipment (new SmallShield ());
+			gladiator17.addEquipment (new Helmet ());
 			gladiator17.Priority = 2;
 
 			Gladiator gladiator18 = new Gladiator ("Batman");
@@ -200,17 +200,10 @@ namespace Gladiator
 			fight.addTeamToFight(team4);
 			fight.addTeamToFight(team5);
 			fight.addTeamToFight(team6);
+
+			Alert.showLine ();
+
 			fight.initializeFight ();
-
-			// test Duel
-			/*Duel d = new Duel (gladiator9, gladiator10);
-			Gladiator winner = d.InTheArena ();
-
-			if (winner == null) {
-				Alert.showAlert ("les deux gladiateurs on perdu !...");
-			} else {
-				Alert.showGladiator (winner);
-			}*/
 
 
 

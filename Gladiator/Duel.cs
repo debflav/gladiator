@@ -34,12 +34,17 @@ namespace Gladiator
 
 		}
 
+		/**
+		 * Renvois le galadiateur gagnant ou null si les deux s'entre tue
+		 *
+		 * @return	Gladiator || null
+		 */
 		public Gladiator InTheArena(){
 
 			int tour = 1;
 
-			Alert.showAlert ("DEBUT DU DUEL");
-			Alert.showAlert ("-------------");
+			Alert.showAlert ("\nDEBUT DU DUEL");
+			Alert.showyellowAlert ("-------------");
 			Alert.showAlertWith ("Gladiateur 1: equipe", (this.Gladiator1.GladiatorTeam.TeamName).ToString());
 			Alert.showAlertWith ("Gladiateur 2: equipe", (this.Gladiator2.GladiatorTeam.TeamName).ToString());
 			Alert.showAlertWith ("Gladiateur 1", (this.Gladiator1.GladiatorName).ToString());

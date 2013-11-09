@@ -22,12 +22,12 @@ namespace Gladiator
 
 		public static void showRedAlert (string message){
 			Console.ForegroundColor = ConsoleColor.Red;
-			Console.WriteLine(message + "\n");
+			Console.WriteLine(message);
 			Console.ResetColor();
 		}
 		public static void showyellowAlert (string message){
 			Console.ForegroundColor = ConsoleColor.Yellow;
-			Console.WriteLine(message + "\n");
+			Console.WriteLine(message);
 			Console.ResetColor();
 		}
 
@@ -58,6 +58,10 @@ namespace Gladiator
 
 			Console.WriteLine( msg );
 
+		}
+
+		public static void showLine(){
+			Console.WriteLine ("\n+++++++++++++++++++++++++++++++++++++++++\n");
 		}
 
 	}

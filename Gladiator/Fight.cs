@@ -38,6 +38,7 @@ namespace Gladiator
 				}
 			}
 
+			Alert.showAlert(" ** " + p_team.TeamName + " ** entre dans le tournoi.");
 			Team.Add(p_team);
 		}
 
@@ -65,6 +66,11 @@ namespace Gladiator
 			                                      orderby b_team.getPercentVictory() descending
 			                                      select b_team).Take(2).ToList();
 
+
+				Alert.showAlert ("------------------------------------------------");
+				Alert.showAlert (" " + sortByStrongestTeam[0].TeamName + " - VS - " + sortByStrongestTeam[1].TeamName);
+				Alert.showAlert ("------------------------------------------------");
+
 				// Tant que les équipes ont des gladiateurs disponible au combat.
 				do {
 					List<Gladiator> gladiators = this.getTwoOpponents (sortByStrongestTeam);
@@ -82,7 +88,7 @@ namespace Gladiator
 				// Il peut arrivé que deux équipes perdent sur un match nul. A ce moment on incrémente
 				// countFight car il y a un match equipe contre equipe en moins.
 				if (false == sortByStrongestTeam [0].teamGladiatorInGame () &&
-				    false ==  sortByStrongestTeam [1].teamGladiatorInGame ()) {
+				    false == sortByStrongestTeam [1].teamGladiatorInGame ()) {
 					countFight++;
 				}
 
@@ -124,23 +130,25 @@ namespace Gladiator
 		 */
 		public void roundEndBetweenTwoTeam(List<Team> sortByStrongestTeam)
 		{
+			Alert.showRedAlert("\n---------------------------------------");
 			foreach (Team b_rowTeam in sortByStrongestTeam) {
 				bool noMoreGladiator = b_rowTeam.teamGladiatorInGame();			
 				b_rowTeam.MatchPlayed++;
 				if (noMoreGladiator == false) {
 					b_rowTeam.TeamDefeatNumber++;
 					this.Team.Remove (b_rowTeam);
-					Alert.showRedAlert(b_rowTeam.TeamName + " à perdu le match !");
+					Alert.showAlert("~~ Gagant du match : " + b_rowTeam.TeamName);
 
 
 				} else {
 					b_rowTeam.WinNumber++;
-					Alert.showyellowAlert(b_rowTeam.TeamName + " à gagné le match !");
+					Alert.showAlert("~~ Perdant du match : " + b_rowTeam.TeamName);
 					foreach (Gladiator b_glad in b_rowTeam.Gladiator) {
 						b_glad.InGame = true;
 					}
 				}
 			}
+			Alert.showRedAlert("---------------------------------------\n");
 		}
 
 	}

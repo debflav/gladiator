@@ -150,8 +150,10 @@ namespace Gladiator
 				}
 			} else {
 				int reste = NB_MAX_EQUIPMENT - this.NbEquipmentCurent ;
-				Alert.showAlert ("Il reste " + reste.ToString() + " point(s) d'équipement au gladiateur !");
-			}
+				Alert.showAlert (this.GladiatorName + " n'a plus que " +
+				                 reste.ToString() + " point(s) d'équipement ! - " + 
+				                 onEquipment.Name + " impossible à ajouter ");
+			} 
 
 		}
 
